@@ -95,7 +95,7 @@ Plans:
 Plans:
 **Wave 1**
 
-- [ ] 03-01-PLAN.md — Rewrite session-start.sh + nudge.sh in place; edit hooks.json UserPromptSubmit matcher to final regex; run automated probes (drift 4a/4b/4c, token-count, JSON validity, chmod, functional shell smoke) → HOOKS-01, HOOKS-02, HOOKS-03, HOOKS-04
+- [x] 03-01-PLAN.md — Rewrite session-start.sh + nudge.sh in place; edit hooks.json UserPromptSubmit matcher to final regex; run automated probes (drift 4a/4b/4c, token-count, JSON validity, chmod, functional shell smoke) → HOOKS-01, HOOKS-02, HOOKS-03, HOOKS-04
 
 **Wave 2** *(blocked on Wave 1 — needs files written before cache refresh + UAT runs)*
 
@@ -131,7 +131,7 @@ Phase 3 depends conceptually on Phase 2 (hook nudge text references router conte
 |-------|----------------|--------|-----------|
 | 1. Plugin Mechanism Spike | 3/3 | Complete | 2026-05-22 |
 | 2. Router Skill + Content | 4/4 | Complete   | 2026-05-22 |
-| 3. Hook Scripts + Regex | 0/2 | Planned | - |
+| 3. Hook Scripts + Regex | 1/2 | In Progress|  |
 | 4. Live Validation | 0/TBD | Not started | - |
 
 ## Coverage check

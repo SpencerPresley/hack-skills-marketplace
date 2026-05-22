@@ -4,8 +4,8 @@ milestone: v2.0
 milestone_name: Router & Hooks (Sidecar)
 status: executing
 stopped_at: Phase 3 context gathered
-last_updated: "2026-05-22T19:21:20.950Z"
-last_activity: 2026-05-22 -- Phase 03 planning complete
+last_updated: "2026-05-22T19:23:50.212Z"
+last_activity: 2026-05-22 -- Phase 03 execution started
 progress:
   total_phases: 4
   completed_phases: 2
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-22)
 
 **Core value:** Selective topical activation of hacking-skill prompts, with optional routing and methodology scaffolding via the sidecar router plugin.
-**Current focus:** Phase 3 — hook scripts + regex
+**Current focus:** Phase 03 — hook-scripts-regex
 
 ## Current Position
 
-Phase: 3
-Plan: Not started
-Status: Ready to execute
-Last activity: 2026-05-22 -- Phase 03 planning complete
+Phase: 03 (hook-scripts-regex) — EXECUTING
+Plan: 1 of 2
+Status: Executing Phase 03
+Last activity: 2026-05-22 -- Phase 03 execution started
 
 ## Performance Metrics
 
