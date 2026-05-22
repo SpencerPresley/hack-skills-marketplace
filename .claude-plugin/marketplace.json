@@ -1,18 +1,43 @@
 {
   "name": "hack-skills-marketplace",
-  "owner": { "name": "Spencer Presley" },
-  "description": "Curated topical groups of yaklang/hack-skills",
+  "owner": {
+    "name": "Spencer Presley"
+  },
+  "description": "Curated topical groups of yaklang/hack-skills — install only the topical areas you need.",
   "plugins": [
     {
-      "name": "hack-skills-recon",
+      "name": "hack-skills-active-directory-and-windows",
       "source": {
         "source": "git-subdir",
         "url": "https://github.com/yaklang/hack-skills.git",
         "path": "skills"
       },
       "strict": false,
-      "description": "Reconnaissance and information gathering",
-      "skills": ["./api-recon-and-docs"]
+      "description": "Active Directory and Windows endpoint attacks",
+      "skills": [
+        "./active-directory-acl-abuse",
+        "./active-directory-certificate-services",
+        "./active-directory-kerberos-attacks",
+        "./ntlm-relay-coercion",
+        "./windows-av-evasion",
+        "./windows-lateral-movement",
+        "./windows-privilege-escalation"
+      ]
+    },
+    {
+      "name": "hack-skills-ai-and-supply-chain",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "AI/ML security and software supply chain attacks",
+      "skills": [
+        "./ai-ml-security",
+        "./dependency-confusion",
+        "./llm-prompt-injection"
+      ]
     },
     {
       "name": "hack-skills-auth-bypass",
@@ -25,7 +50,210 @@
       "description": "Authentication and authorization bypass",
       "skills": [
         "./401-403-bypass-techniques",
-        "./api-auth-and-jwt-abuse"
+        "./api-auth-and-jwt-abuse",
+        "./api-authorization-and-bola",
+        "./authbypass-authentication-flaws",
+        "./idor-broken-object-authorization",
+        "./jwt-oauth-token-attacks",
+        "./oauth-oidc-misconfiguration",
+        "./saml-sso-assertion-attacks",
+        "./type-juggling"
+      ]
+    },
+    {
+      "name": "hack-skills-binary-exploitation",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "Binary exploitation and reverse engineering",
+      "skills": [
+        "./anti-debugging-techniques",
+        "./arbitrary-write-to-rce",
+        "./binary-protection-bypass",
+        "./browser-exploitation-v8",
+        "./code-obfuscation-deobfuscation",
+        "./format-string-exploitation",
+        "./heap-exploitation",
+        "./kernel-exploitation",
+        "./sandbox-escape-techniques",
+        "./stack-overflow-and-rop",
+        "./symbolic-execution-tools",
+        "./vm-and-bytecode-reverse"
+      ]
+    },
+    {
+      "name": "hack-skills-crypto-attacks",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "Cryptography attacks and blockchain/DeFi exploits",
+      "skills": [
+        "./classical-cipher-analysis",
+        "./defi-attack-patterns",
+        "./hash-attack-techniques",
+        "./lattice-crypto-attacks",
+        "./rsa-attack-techniques",
+        "./smart-contract-vulnerabilities",
+        "./symmetric-cipher-attacks"
+      ]
+    },
+    {
+      "name": "hack-skills-forensics-and-misc-recovery",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "Forensics, memory analysis, and steganographic recovery",
+      "skills": [
+        "./memory-forensics-volatility",
+        "./steganography-techniques",
+        "./traffic-analysis-pcap"
+      ]
+    },
+    {
+      "name": "hack-skills-linux-and-post-exploit",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "Linux/macOS post-exploitation and network pivoting",
+      "skills": [
+        "./container-escape-techniques",
+        "./kubernetes-pentesting",
+        "./linux-lateral-movement",
+        "./linux-privilege-escalation",
+        "./linux-security-bypass",
+        "./macos-process-injection",
+        "./macos-security-bypass",
+        "./network-protocol-attacks",
+        "./reverse-shell-techniques",
+        "./tunneling-and-pivoting"
+      ]
+    },
+    {
+      "name": "hack-skills-mobile",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "Mobile platform pentesting",
+      "skills": [
+        "./android-pentesting-tricks",
+        "./ios-pentesting-tricks",
+        "./mobile-ssl-pinning-bypass"
+      ]
+    },
+    {
+      "name": "hack-skills-recon",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "Reconnaissance and attack-surface enumeration",
+      "skills": [
+        "./api-recon-and-docs",
+        "./graphql-and-hidden-parameters",
+        "./insecure-source-code-management",
+        "./recon-and-methodology",
+        "./subdomain-takeover",
+        "./unauthorized-access-common-services"
+      ]
+    },
+    {
+      "name": "hack-skills-server-side-execution",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "Server-side code execution and trust-boundary chains",
+      "skills": [
+        "./cmdi-command-injection",
+        "./deserialization-insecure",
+        "./expression-language-injection",
+        "./jndi-injection",
+        "./path-traversal-lfi",
+        "./ssrf-server-side-request-forgery",
+        "./ssti-server-side-template-injection",
+        "./upload-insecure-files"
+      ]
+    },
+    {
+      "name": "hack-skills-web-client-attacks",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "Client-side and browser-context web vulnerabilities",
+      "skills": [
+        "./business-logic-vulnerabilities",
+        "./clickjacking",
+        "./cors-cross-origin-misconfiguration",
+        "./csp-bypass-advanced",
+        "./csrf-cross-site-request-forgery",
+        "./dns-rebinding-attacks",
+        "./open-redirect",
+        "./prototype-pollution",
+        "./prototype-pollution-advanced",
+        "./race-condition"
+      ]
+    },
+    {
+      "name": "hack-skills-web-injection",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "Web-layer injection and input-driven attacks",
+      "skills": [
+        "./csv-formula-injection",
+        "./dangling-markup-injection",
+        "./email-header-injection",
+        "./ghost-bits-cast-attack",
+        "./nosql-injection",
+        "./sqli-sql-injection",
+        "./waf-bypass-techniques",
+        "./xslt-injection",
+        "./xss-cross-site-scripting",
+        "./xxe-xml-external-entity"
+      ]
+    },
+    {
+      "name": "hack-skills-web-protocol-attacks",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
+      "strict": false,
+      "description": "HTTP protocol-layer attacks and request flow abuse",
+      "skills": [
+        "./crlf-injection",
+        "./http-host-header-attacks",
+        "./http-parameter-pollution",
+        "./http2-specific-attacks",
+        "./request-smuggling",
+        "./web-cache-deception",
+        "./websocket-security"
       ]
     }
   ]
