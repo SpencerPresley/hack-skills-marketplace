@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Router & Hooks (Sidecar)
 status: executing
-stopped_at: v2.0 milestone opened. Design spec committed at `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 phase artifacts archived to `.planning/phases-archive-v1.0/`. Awaiting REQUIREMENTS.md + ROADMAP.md generation.
-last_updated: "2026-05-22T15:37:33.350Z"
-last_activity: 2026-05-22 -- Phase 01 execution started
+stopped_at: Phase 01 (plugin-mechanism-spike) COMPLETE. All 3 plans landed (01-01 plugin tree, 01-02 marketplace entry, 01-03 UAT). ROADMAP SC #1–#5 all closed. Marketplace currently registered local-path; Phase 4 must switch to GitHub source before publish. Both UAT plugins (hack-skills-router, hack-skills-auth-bypass) remain installed at user scope.
+last_updated: "2026-05-22T16:03:15.174Z"
+last_activity: 2026-05-22 -- Phase 01 complete (Plan 03 UAT approved)
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 0
-  percent: 0
+  completed_plans: 3
+  percent: 25
 ---
 
 # Project State
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-22)
 
 **Core value:** Selective topical activation of hacking-skill prompts, with optional routing and methodology scaffolding via the sidecar router plugin.
-**Current focus:** Phase 01 — plugin-mechanism-spike
+**Current focus:** Phase 02 — Router Skill + Content (ready to start; Phase 01 mechanism spike complete)
 
 ## Current Position
 
-Phase: 01 (plugin-mechanism-spike) — EXECUTING
-Plan: 1 of 3
-Status: Executing Phase 01
-Last activity: 2026-05-22 -- Phase 01 execution started
+Phase: 01 (plugin-mechanism-spike) — COMPLETE
+Plan: 3 of 3 (complete)
+Status: Phase 01 complete; ready to start Phase 02 (Router Skill + Content)
+Last activity: 2026-05-22 -- Phase 01 complete (Plan 03 UAT approved)
 
 ## Performance Metrics
 
@@ -65,6 +65,9 @@ Recent decisions affecting current work:
 - Project init: Multiple plugin entries share one `source` — verify per-plugin caching in Phase 1
 - Project init: Group by skill-content topicality, not yaklang's categorization
 - Project init: Verify the 3 open questions with a minimal 2-group test marketplace before building out
+- Phase 01-03 UAT: Use Option B (fresh `claude` invocation) for session-boundary trigger — preserves orchestrator session, proves matcher=startup fires SessionStart
+- Phase 01-03 UAT: Skip optional cleanup uninstalls — both UAT plugins (hack-skills-router, hack-skills-auth-bypass) remain installed for continued Phase 02 development
+- Phase 01-03 UAT: `claude plugin validate` CLI v2.1.148 PASS on both plugin and marketplace-catalog forms (fallback "skipped if absent" clause did not apply)
 
 ### Pending Todos
 
@@ -83,6 +86,6 @@ None at v2.0 milestone open. The design spec at `.planning/specs/2026-05-22-v2-r
 
 ## Session Continuity
 
-Last session: 2026-05-22T14:46:00.000Z
-Stopped at: v2.0 milestone opened. Design spec committed at `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 phase artifacts archived to `.planning/phases-archive-v1.0/`. Awaiting REQUIREMENTS.md + ROADMAP.md generation.
-Resume file: .planning/specs/2026-05-22-v2-router-design.md
+Last session: 2026-05-22T16:00:03Z
+Stopped at: Phase 01 (plugin-mechanism-spike) complete. All 3 plans landed; ROADMAP SC #1–#5 all closed. UAT evidence in `.planning/phases/01-plugin-mechanism-spike/01-03-SUMMARY.md`. Marketplace registered local-path (Phase 4 must switch back to GitHub source). Both UAT plugins remain installed at user scope.
+Resume file: .planning/phases/01-plugin-mechanism-spike/01-03-SUMMARY.md

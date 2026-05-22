@@ -10,7 +10,7 @@ Design source: `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 (shipped) 
 
 **Phase Numbering:** Continues from milestone v1.0 (which used 1–4); v2.0 resets to start at Phase 1 since the v1 phase dirs are archived under `.planning/phases-archive-v1.0/`.
 
-- [ ] **Phase 1: Plugin Mechanism Spike** — Stand up the sidecar plugin shell (`plugins/hack-skills-router/`), add the marketplace.json entry, declare hook configs with stub scripts, and verify the whole structure installs and fires from the local marketplace.
+- [x] **Phase 1: Plugin Mechanism Spike** — Stand up the sidecar plugin shell (`plugins/hack-skills-router/`), add the marketplace.json entry, declare hook configs with stub scripts, and verify the whole structure installs and fires from the local marketplace.
 - [ ] **Phase 2: Router Skill + Content** — Author the router `SKILL.md` (frontmatter + body), populate `patterns/routing-tables.md` (full v1-plugin coverage), `patterns/expert-intuitions.md` (8 boundary conditions + attribution), and `examples/workflow-walkthroughs.md` (3–4 end-to-end traces).
 - [ ] **Phase 3: Hook Scripts + Regex** — Replace the Phase 1 stub hook scripts with the real SessionStart payload (~250 tok trust + ops + intuitions) and UserPromptSubmit nudge (~75 tok) + the security-context regex matcher.
 - [ ] **Phase 4: Live Validation** — Push v2 marketplace to GitHub, verify a fresh user can install the router from the live published repo and that all hook + routing flows work end-to-end.
@@ -42,7 +42,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 01-03-PLAN.md — UAT: pre-flight validate artifacts, re-register marketplace as local path, install + coexistence install, observe SessionStart/UserPromptSubmit stub markers after session boundary
+- [x] 01-03-PLAN.md — UAT: pre-flight validate artifacts, re-register marketplace as local path, install + coexistence install, observe SessionStart/UserPromptSubmit stub markers after session boundary
 
 ---
 
@@ -111,7 +111,7 @@ Phase 3 depends conceptually on Phase 2 (hook nudge text references router conte
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Plugin Mechanism Spike | 2/3 | In Progress|  |
+| 1. Plugin Mechanism Spike | 3/3 | Complete | 2026-05-22 |
 | 2. Router Skill + Content | 0/TBD | Not started | - |
 | 3. Hook Scripts + Regex | 0/TBD | Not started | - |
 | 4. Live Validation | 0/TBD | Not started | - |
