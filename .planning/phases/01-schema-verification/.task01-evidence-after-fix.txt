@@ -1,0 +1,297 @@
+=== Task 1 Evidence Capture (Post-fix, git-subdir source descriptor) ===
+Captured: 2026-05-22 (during Phase 1 research/recovery pass)
+Pattern under test: source = git-subdir + path="skills", strict: false, root-level skill paths
+
+=== CMD 1: claude plugin marketplace update hack-skills-marketplace ===
+Configured marketplaces:
+
+  ❯ claude-plugins-official
+    Source: GitHub (anthropics/claude-plugins-official)
+
+  ❯ omc
+    Source: Git (https://github.com/Yeachan-Heo/oh-my-claudecode.git)
+
+  ❯ rust-skills
+    Source: GitHub (actionbook/rust-skills)
+
+  ❯ wondelai-skills
+    Source: GitHub (wondelai/skills)
+
+  ❯ openai-codex
+    Source: GitHub (openai/codex-plugin-cc)
+
+  ❯ hack-skills-marketplace
+    Source: Directory (/Users/spencerpresley/code/hack-skills-wip/hack-skills-marketplace)
+
+
+=== CMD 2: claude plugin details hack-skills-recon@hack-skills-marketplace ===
+hack-skills-recon
+  Reconnaissance and information gathering
+  Source: hack-skills-recon@hack-skills-marketplace
+
+Component inventory
+  Skills (1)  api-recon-and-docs
+  Agents (0)
+  Hooks (0)
+  MCP servers (0)
+  LSP servers (0)
+
+Projected token cost
+  Always-on:   ~87 tok   added to every session
+
+Per-component (rounded)
+  component           always-on  on-invoke
+  api-recon-and-docs        ~90       ~720
+
+  On-invoke cost is paid each time a skill or agent fires.
+  Token counts are estimates and may differ from actual usage.
+
+=== CMD 3: claude plugin details hack-skills-auth-bypass@hack-skills-marketplace ===
+hack-skills-auth-bypass
+  Authentication and authorization bypass
+  Source: hack-skills-auth-bypass@hack-skills-marketplace
+
+Component inventory
+  Skills (2)  401-403-bypass-techniques, api-auth-and-jwt-abuse
+  Agents (0)
+  Hooks (0)
+  MCP servers (0)
+  LSP servers (0)
+
+Projected token cost
+  Always-on:   ~205 tok   added to every session
+
+Per-component (rounded)
+  component                  always-on  on-invoke
+  401-403-bypass-techniques       ~120      ~4.7k
+  api-auth-and-jwt-abuse           ~90        ~1k
+
+  On-invoke cost is paid each time a skill or agent fires.
+  Token counts are estimates and may differ from actual usage.
+
+=== CMD 4: claude plugin list (hack-skills entries only) ===
+
+  ❯ hack-skills-auth-bypass@hack-skills-marketplace
+    Version: c6f732befcae-32c1cf49
+    Scope: user
+--
+
+  ❯ hack-skills-recon@hack-skills-marketplace
+    Version: c6f732befcae-32c1cf49
+    Scope: user
+
+=== CMD 5: installed_plugins.json (filtered to hack-skills entries) ===
+{}
+
+=== CMD 6: VERIFY-03 cache layout (both plugins installed, find -maxdepth 3 -type d) ===
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/file-access-vuln
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/dependency-confusion
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/injection-checking
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/cmdi-command-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/prototype-pollution
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/unauthorized-access-common-services
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/saml-sso-assertion-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/api-sec
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/ssti-server-side-template-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/macos-process-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/format-string-exploitation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/http-host-header-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/steganography-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/csv-formula-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/defi-attack-patterns
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/websocket-security
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/graphql-and-hidden-parameters
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/browser-exploitation-v8
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/xxe-xml-external-entity
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/traffic-analysis-pcap
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/linux-privilege-escalation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/container-escape-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/active-directory-kerberos-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/ai-ml-security
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/nosql-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/clickjacking
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/path-traversal-lfi
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/llm-prompt-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/401-403-bypass-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/arbitrary-write-to-rce
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/hack
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/type-juggling
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/linux-lateral-movement
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/tunneling-and-pivoting
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/dangling-markup-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/.in_use
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/ios-pentesting-tricks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/network-protocol-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/classical-cipher-analysis
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/authbypass-authentication-flaws
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/api-recon-and-docs
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/macos-security-bypass
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/smart-contract-vulnerabilities
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/windows-av-evasion
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/mobile-ssl-pinning-bypass
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/sqli-sql-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/business-logic-vuln
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/ssrf-server-side-request-forgery
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/windows-privilege-escalation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/jwt-oauth-token-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/hash-attack-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/kubernetes-pentesting
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/ghost-bits-cast-attack
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/recon-and-methodology
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/jndi-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/lattice-crypto-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/csrf-cross-site-request-forgery
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/kernel-exploitation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/rsa-attack-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/symmetric-cipher-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/recon-for-sec
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/android-pentesting-tricks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/xss-cross-site-scripting
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/vm-and-bytecode-reverse
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/anti-debugging-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/memory-forensics-volatility
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/subdomain-takeover
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/upload-insecure-files
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/web-cache-deception
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/idor-broken-object-authorization
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/active-directory-acl-abuse
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/open-redirect
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/heap-exploitation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/oauth-oidc-misconfiguration
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/request-smuggling
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/expression-language-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/dns-rebinding-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/windows-lateral-movement
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/race-condition
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/binary-protection-bypass
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/cors-cross-origin-misconfiguration
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/insecure-source-code-management
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/api-authorization-and-bola
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/ntlm-relay-coercion
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/csp-bypass-advanced
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/http-parameter-pollution
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/crlf-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/active-directory-certificate-services
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/reverse-shell-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/waf-bypass-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/xslt-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/prototype-pollution-advanced
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/business-logic-vulnerabilities
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/symbolic-execution-tools
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/linux-security-bypass
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/code-obfuscation-deobfuscation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/stack-overflow-and-rop
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/sandbox-escape-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/deserialization-insecure
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/email-header-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/auth-sec
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/http2-specific-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-recon/c6f732befcae-32c1cf49/api-auth-and-jwt-abuse
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/file-access-vuln
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/dependency-confusion
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/injection-checking
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/cmdi-command-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/prototype-pollution
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/unauthorized-access-common-services
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/saml-sso-assertion-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/api-sec
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/ssti-server-side-template-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/macos-process-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/format-string-exploitation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/http-host-header-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/steganography-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/csv-formula-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/defi-attack-patterns
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/websocket-security
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/graphql-and-hidden-parameters
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/browser-exploitation-v8
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/xxe-xml-external-entity
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/traffic-analysis-pcap
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/linux-privilege-escalation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/container-escape-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/active-directory-kerberos-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/ai-ml-security
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/nosql-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/clickjacking
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/path-traversal-lfi
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/llm-prompt-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/401-403-bypass-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/arbitrary-write-to-rce
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/hack
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/type-juggling
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/linux-lateral-movement
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/tunneling-and-pivoting
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/dangling-markup-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/.in_use
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/ios-pentesting-tricks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/network-protocol-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/classical-cipher-analysis
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/authbypass-authentication-flaws
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/api-recon-and-docs
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/macos-security-bypass
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/smart-contract-vulnerabilities
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/windows-av-evasion
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/mobile-ssl-pinning-bypass
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/sqli-sql-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/business-logic-vuln
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/ssrf-server-side-request-forgery
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/windows-privilege-escalation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/jwt-oauth-token-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/hash-attack-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/kubernetes-pentesting
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/ghost-bits-cast-attack
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/recon-and-methodology
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/jndi-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/lattice-crypto-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/csrf-cross-site-request-forgery
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/kernel-exploitation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/rsa-attack-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/symmetric-cipher-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/recon-for-sec
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/android-pentesting-tricks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/xss-cross-site-scripting
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/vm-and-bytecode-reverse
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/anti-debugging-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/memory-forensics-volatility
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/subdomain-takeover
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/upload-insecure-files
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/web-cache-deception
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/idor-broken-object-authorization
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/active-directory-acl-abuse
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/open-redirect
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/heap-exploitation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/oauth-oidc-misconfiguration
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/request-smuggling
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/expression-language-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/dns-rebinding-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/windows-lateral-movement
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/race-condition
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/binary-protection-bypass
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/cors-cross-origin-misconfiguration
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/insecure-source-code-management
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/api-authorization-and-bola
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/ntlm-relay-coercion
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/csp-bypass-advanced
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/http-parameter-pollution
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/crlf-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/active-directory-certificate-services
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/reverse-shell-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/waf-bypass-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/xslt-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/prototype-pollution-advanced
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/business-logic-vulnerabilities
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/symbolic-execution-tools
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/linux-security-bypass
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/code-obfuscation-deobfuscation
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/stack-overflow-and-rop
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/sandbox-escape-techniques
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/deserialization-insecure
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/email-header-injection
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/auth-sec
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/http2-specific-attacks
+/Users/spencerpresley/.claude/plugins/cache/hack-skills-marketplace/hack-skills-auth-bypass/c6f732befcae-32c1cf49/api-auth-and-jwt-abuse

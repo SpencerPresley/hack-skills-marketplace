@@ -1,0 +1,28 @@
+=== VERIFY-02 PRIMARY evidence: fresh-session system reminder capture ===
+Captured: 2026-05-22 (during Phase 1 research/recovery pass, after git-subdir fix)
+Method: Non-interactive `claude -p` from /tmp (not the project working dir)
+Prompt: "Dump verbatim the section of your system reminder that lists available skills. Output it as a fenced code block. Do not summarize, do not rephrase."
+
+State at capture:
+- marketplace: hack-skills-marketplace (directory source @ /Users/spencerpresley/code/hack-skills-wip/hack-skills-marketplace, scope: user)
+- installed plugins (this marketplace): hack-skills-recon (enabled), hack-skills-auth-bypass (enabled), both at version c6f732befcae-32c1cf49
+- marketplace.json shape: git-subdir source with path="skills", root-level skill paths in `skills` array
+
+=== VERBATIM CAPTURE — only the hack-skills entries from the larger available-skills block ===
+
+- hack-skills-auth-bypass:401-403-bypass-techniques: 401/403 bypass playbook. Use when encountering access-denied responses on admin panels, API endpoints, or restricted paths. Covers path manipulation, HTTP method tampering, header injection, protocol downgrade, and automated bypass tools.
+- hack-skills-auth-bypass:api-auth-and-jwt-abuse: API authentication and JWT abuse playbook. Use when testing bearer tokens, API keys, claim trust, header spoofing, rate limits, and API auth boundary weaknesses.
+- hack-skills-recon:api-recon-and-docs: API reconnaissance and documentation review playbook. Use when discovering endpoints, schemas, versions, OpenAPI specs, hidden docs, and surface area for API testing.
+
+=== ASSESSMENT ===
+
+Curated skills exposed in fresh session: EXACTLY 3 (the curated subset across both groups)
+Non-curated upstream skills exposed: ZERO
+Description-dropout (Pitfall 1 from RESEARCH.md issue #57515): NONE — all three entries have full descriptions
+
+VERIFY-02 PRIMARY answer: YES
+- `hack-skills-recon` (1 curated path: `./api-recon-and-docs`) → 1 skill in system reminder ✓
+- `hack-skills-auth-bypass` (2 curated paths: `./401-403-bypass-techniques`, `./api-auth-and-jwt-abuse`) → 2 skills in system reminder ✓
+- Total: 3 curated skills, no upstream leakage despite 102 skill directories present in the disk cache
+
+This contradicts the original (failed) Phase 1 attempt with `source: github, repo` where `claude plugin details` reported `Skills (102)`. The git-subdir source descriptor with `path: "skills"` is the load-bearing change.
