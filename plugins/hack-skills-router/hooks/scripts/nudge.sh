@@ -1,7 +1,7 @@
 #!/bin/bash
-# Source: design spec §5.5 + Phase 1 RESEARCH §Pitfall 3 + CONTEXT.md D-01/D-03/D-07
+# Source: design spec §5.5 + 01-RESEARCH §Pitfall 3 + 03-CONTEXT.md D-01/D-03/D-07
 # UserPromptSubmit hook for hack-skills-router. The matcher field in hooks.json is silently
-# ignored by Claude Code 2.1.x (per Phase 1 finding) — actual gating happens here via grep -qiE.
+# ignored by Claude Code 2.1.x (per 01-RESEARCH finding) — actual gating happens here via grep -qiE.
 # Non-match behavior: silent exit 0 (D-01). Malformed stdin → empty PROMPT → grep no-match
 # → silent exit 0 (graceful — see Pitfall 7).
 
