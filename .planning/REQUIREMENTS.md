@@ -9,9 +9,9 @@
 
 Confirms the marketplace schema actually supports the planned approach. A "no" on any of these collapses the whole strategy and forces a redesign — so they ship first, in a minimal test marketplace.
 
-- [ ] **VERIFY-01**: User can address individual skill subdirectories in the `skills` array (e.g. `["./skills/skill-a", "./skills/skill-b"]`) rather than being limited to parent directories
-- [ ] **VERIFY-02**: After installing a single group plugin built with `strict: false` + curated `skills` array, the session's system reminder lists only the curated skills — not all skills present in the source repo
-- [ ] **VERIFY-03**: Multiple plugin entries sharing `yaklang/hack-skills` as their `source` produce separate cache entries in `~/.claude/plugins/cache/` and all install/enable cleanly without collision
+- [x] **VERIFY-01**: User can address individual skill subdirectories in the `skills` array rather than being limited to parent directories. *Validated Phase 1 with mechanism correction: requires `source: git-subdir` with `path: "skills"` (NOT plain `source: github`). Working paths are root-level (`./skill-name`, not `./skills/skill-name`). Evidence: `claude plugin details` reports curated counts (`Skills (2)` for auth-bypass, `Skills (1)` for recon).*
+- [x] **VERIFY-02**: After installing a single group plugin built with `strict: false` + curated `skills` array, the session's system reminder lists only the curated skills — not all skills present in the source repo. *Validated Phase 1 via fresh `claude -p` session: system reminder showed exactly 3 skills total across both installed plugins (2 from auth-bypass, 1 from recon), no leakage of the other 99 upstream skills.*
+- [x] **VERIFY-03**: Multiple plugin entries sharing `yaklang/hack-skills` as their `source` produce separate cache entries in `~/.claude/plugins/cache/` and all install/enable cleanly without collision. *Validated Phase 1: with both plugins installed concurrently, `~/.claude/plugins/cache/hack-skills-marketplace/` contains parallel `hack-skills-recon/c6f732befcae-32c1cf49/` and `hack-skills-auth-bypass/c6f732befcae-32c1cf49/` subdirs. The shared SHA+path-hash version token does not collide (parent dirs partition by plugin name).*
 
 ### Grouping
 
@@ -28,7 +28,7 @@ Implements the verified, classified groups as actual marketplace entries.
 
 - [ ] **BUILD-01**: `.claude-plugin/marketplace.json` declares ~8 plugin entries, one per topical group (final count derived from GROUP outcomes)
 - [ ] **BUILD-02**: Each plugin entry has a clear name (`hack-skills-<topic>`), a one-line description aligned to its scope, and a `skills` array referencing specific upstream paths
-- [ ] **BUILD-03**: Every plugin entry uses `strict: false` and points at `yaklang/hack-skills` as its `source` (github source descriptor)
+- [ ] **BUILD-03**: Every plugin entry uses `strict: false` and a `git-subdir` source descriptor `{ "source": "git-subdir", "url": "https://github.com/yaklang/hack-skills.git", "path": "skills" }`. Skill paths in the `skills` array are root-level (e.g. `./api-recon-and-docs`), NOT nested under `./skills/`. *(Originally specified `source: github` — corrected during Phase 1 research; see PROJECT.md Key Decisions and `.planning/phases/01-schema-verification/01-VERIFICATION.md`.)*
 
 ### Publish & Live Validation
 
@@ -71,9 +71,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| VERIFY-01 | Phase 1 | Pending |
-| VERIFY-02 | Phase 1 | Pending |
-| VERIFY-03 | Phase 1 | Pending |
+| VERIFY-01 | Phase 1 | ✓ Validated |
+| VERIFY-02 | Phase 1 | ✓ Validated |
+| VERIFY-03 | Phase 1 | ✓ Validated |
 | GROUP-01 | Phase 2 | Pending |
 | GROUP-02 | Phase 2 | Pending |
 | GROUP-03 | Phase 2 | Pending |

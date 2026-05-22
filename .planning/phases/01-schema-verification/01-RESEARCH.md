@@ -656,3 +656,91 @@ claude plugin list --json | jq '.[] | select(.id | startswith("hack-skills-")) |
 **Valid until:** 2026-06-21 (30 days; Claude Code release cadence is fast but the marketplace schema is stable)
 
 ## RESEARCH COMPLETE
+
+---
+
+## Phase 1 Empirical Findings (Appendix — added 2026-05-22 post-execution)
+
+This appendix records research conducted DURING Phase 1 execution after Plan 01-02's Task 1 produced a VERIFY-01 FAIL evidence (Skills (102), ~10,503 always-on tokens). The pre-execution research above assumed the github+nested-skills pattern would work — empirical observation invalidated that assumption. The investigation that followed identified the structural difference between working and failing patterns and produced a fix.
+
+### Observed FAIL (original pattern)
+
+Marketplace shape:
+```json
+{
+  "source": { "source": "github", "repo": "yaklang/hack-skills" },
+  "strict": false,
+  "skills": ["./skills/401-403-bypass-techniques", "./skills/api-auth-and-jwt-abuse"]
+}
+```
+Result of `claude plugin details hack-skills-auth-bypass@hack-skills-marketplace`:
+- `Skills (102)` — all upstream skills listed, not the curated 2
+- `Always-on: ~10,503 tok` — full bloat, not the expected ~200 tok
+
+### Reference marketplaces tested
+
+Three real-world marketplaces on disk were tested to triangulate the failure:
+
+**wondelai-skills** (github.com/wondelai/skills):
+- Pattern: `source: "./"` (marketplace IS the source), `strict: false`, skill dirs at SOURCE ROOT (e.g. `./drive-motivation`)
+- Test: installed `team-motivation` (1 curated skill from a 42-skill source)
+- Result: `Skills (1) drive-motivation`, ~219 tok — CURATION WORKS
+- Test: installed `product-strategy` (3 curated skills from same 42-skill source)
+- Result: `Skills (3) jobs-to-be-done, mom-test, negotiation`, ~662 tok — CURATION WORKS
+
+**claude-plugins-official/box** (github.com/box/box-for-ai):
+- Pattern: `source: { source: "url", url: "...git", sha: "..." }`, NO `strict` set (defaults to `true`), skill dirs nested under `./skills/`, upstream has a `plugin.json` declaring metadata only (no `skills:` field)
+- Test: installed `box`
+- Result: `Skills (5)` — matches the 5 entries in the marketplace's `skills` array
+- **INCONCLUSIVE for our question:** the box upstream has exactly 5 skills, all of which are in the marketplace entry. There's nothing for the curation to filter out — both "filter works" and "filter is a no-op + auto-discovery finds all 5" produce the same observation.
+
+**claude-plugins-official/netsuite-suitecloud** (github.com/oracle/netsuite-suitecloud-sdk):
+- Pattern: `source: { source: "git-subdir", url: "...git", path: "packages/agent-skills", ref, sha }`, `strict: false`, skill dirs at the ROOT of the cloned subdir
+- Test: installed `netsuite-suitecloud`
+- Result: `Skills (3) netsuite-ai-connector-instructions, ...` — matches the 3 entries
+- Also INCONCLUSIVE strictly (the cloned subdir contains exactly those 3 skills) — but pattern-wise this is the closest analog to wondelai (root-level paths) using an external git source.
+
+### Identified structural difference
+
+The working patterns (wondelai, netsuite) have skill directories at the ROOT of the cloned source content. The failing pattern (ours, with `source: github`) has skill directories nested one level deep under `./skills/`. The hypothesis is that Claude Code 2.1.148 auto-discovers `./skills/*/SKILL.md` at the source root regardless of the explicit `skills` array — when there IS a `./skills/` directory, auto-discovery wins; when there isn't (because the source was sparse-cloned at the `skills/` subdir, or because skills live at the source root naturally), the explicit array is honored.
+
+### Fix tested and validated
+
+Marketplace shape changed to:
+```json
+{
+  "source": {
+    "source": "git-subdir",
+    "url": "https://github.com/yaklang/hack-skills.git",
+    "path": "skills"
+  },
+  "strict": false,
+  "skills": ["./401-403-bypass-techniques", "./api-auth-and-jwt-abuse"]
+}
+```
+Two changes:
+1. Source descriptor: `github` → `git-subdir` with `path: "skills"`. Sparse-clones only the `skills/` subdir of yaklang/hack-skills, so each skill directory becomes addressable at the clone root.
+2. Skill paths: `./skills/X` → `./X`. Aligned with the new clone-root location.
+
+Source repository `yaklang/hack-skills` was NOT modified (Constraint: Source immutability is preserved).
+
+Validation:
+- `claude plugin details hack-skills-auth-bypass@hack-skills-marketplace` → `Skills (2) 401-403-bypass-techniques, api-auth-and-jwt-abuse`, ~205 tok ✓
+- `claude plugin details hack-skills-recon@hack-skills-marketplace` → `Skills (1) api-recon-and-docs`, ~87 tok ✓
+- Fresh `claude -p` session's system reminder lists only the 3 curated skills total, no leakage ✓
+- Per-plugin cache subdirs distinct under `~/.claude/plugins/cache/hack-skills-marketplace/<plugin-name>/c6f732befcae-32c1cf49/` ✓
+
+Token reduction vs failed pattern: 10,503 → 205 always-on for the auth-bypass plugin (~98% reduction), matching the project's stated value proposition.
+
+### Implications for downstream phases
+
+- **Phase 3 BUILD-03 (requirement) and Phase 3 Success Criterion 3 (roadmap):** originally specified `source: github`. Both updated to require `source: git-subdir` with `path: "skills"`. Skill paths in `skills` arrays are root-level.
+- **Phase 4 PUB-* requirements:** unaffected. The install commands users run (`/plugin install <group>@hack-skills-marketplace`) don't change. Only the marketplace.json shape changes.
+- **PROJECT.md Key Decisions:** updated to add the git-subdir decision and mark the original `strict: false` / `skills array` / `multiple plugins one source` decisions as Validated (with the corrected source descriptor).
+- **PROJECT.md Constraints:** Source immutability holds. Group sizing 8–15 still holds. Grouping axis still holds.
+
+### Lessons for future research
+
+- Citing a "real-world precedent" requires comparing the precedent's structural shape, not just its surface attributes. The pre-execution research cited wondelai-skills as "exactly the same pattern" but missed that wondelai uses `source: "./"` (local) while we planned `source: github` (remote) — a difference that turned out to matter.
+- `claude plugin details` is the right surface for VERIFY-01 evidence (Pitfall 5 was correct on this) — the bug isn't that details was misleading, the bug was that our original pattern truly didn't curate, and the cache materialization happened to also produce 102 dirs.
+- When a verification FAILS, the right first move is to triangulate against working precedents (which working pattern does ours diverge from, and where?) before pivoting away from the strategy. The pivot policy D-09 said "halt before Phase 2" on VERIFY-01 no, and that was the right gate — but "halt" can include "re-investigate whether the failure is mechanism or strategy" before committing to a strategy pivot.

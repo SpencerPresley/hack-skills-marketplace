@@ -5,19 +5,27 @@
   "plugins": [
     {
       "name": "hack-skills-recon",
-      "source": { "source": "github", "repo": "yaklang/hack-skills" },
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
       "strict": false,
       "description": "Reconnaissance and information gathering",
-      "skills": ["./skills/api-recon-and-docs"]
+      "skills": ["./api-recon-and-docs"]
     },
     {
       "name": "hack-skills-auth-bypass",
-      "source": { "source": "github", "repo": "yaklang/hack-skills" },
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/yaklang/hack-skills.git",
+        "path": "skills"
+      },
       "strict": false,
       "description": "Authentication and authorization bypass",
       "skills": [
-        "./skills/401-403-bypass-techniques",
-        "./skills/api-auth-and-jwt-abuse"
+        "./401-403-bypass-techniques",
+        "./api-auth-and-jwt-abuse"
       ]
     }
   ]

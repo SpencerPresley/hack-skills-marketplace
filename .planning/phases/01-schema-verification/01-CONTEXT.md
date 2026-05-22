@@ -18,10 +18,16 @@ Build a minimal 2-group test `marketplace.json`, install it locally, and answer 
 
 ### Test Marketplace Composition
 - **D-01:** Two test groups, both real candidate buckets from `PROJECT.md` (not throwaways):
-  - `hack-skills-recon` → `./skills/api-recon-and-docs` (1 skill)
-  - `hack-skills-auth-bypass` → `./skills/401-403-bypass-techniques`, `./skills/api-auth-and-jwt-abuse` (2 skills)
+  - `hack-skills-recon` → `./api-recon-and-docs` (1 skill) *(path updated post-D-03-revision — see below)*
+  - `hack-skills-auth-bypass` → `./401-403-bypass-techniques`, `./api-auth-and-jwt-abuse` (2 skills) *(paths updated post-D-03-revision)*
 - **D-02:** Three skill paths total across the two groups. Picks two specific individual paths in one group (auth-bypass) — that is what directly exercises VERIFY-01. Topically distant groups make VERIFY-02 isolation easy to eyeball.
-- **D-03:** Both groups use `strict: false` and `{ "source": "github", "repo": "yaklang/hack-skills" }` per the PROJECT.md key decisions. No `plugin.json` is added to the source repo.
+- **D-03 (SUPERSEDED during Phase 1 execution — see D-03-REVISED below):** Both groups use `strict: false` and `{ "source": "github", "repo": "yaklang/hack-skills" }` per the PROJECT.md key decisions. No `plugin.json` is added to the source repo.
+  - Outcome under D-03: VERIFY-01 FAILED — `claude plugin details` reported `Skills (102)` (all upstream skills), ~10,503 always-on tokens. The `skills` array was not honored.
+  - Research found three working precedents (wondelai-skills, claude-plugins-official/box, claude-plugins-official/netsuite-suitecloud) and identified the structural difference: all working patterns have skill directories at the root of the cloned source. Ours had them nested under `./skills/`, which Claude Code 2.1.148 apparently auto-discovers and uses to override the `skills` array.
+- **D-03-REVISED (post-Phase-1-research, locked):** Both groups use `strict: false` and `{ "source": "git-subdir", "url": "https://github.com/yaklang/hack-skills.git", "path": "skills" }`. Skill paths in the `skills` array are root-level (`./401-403-bypass-techniques`), NOT nested (no `./skills/` prefix). No `plugin.json` is added to the source repo.
+  - Outcome under D-03-REVISED: VERIFY-01 PASS — `claude plugin details hack-skills-auth-bypass@hack-skills-marketplace` reports `Skills (2) 401-403-bypass-techniques, api-auth-and-jwt-abuse`, ~205 always-on tokens.
+  - Source repo `yaklang/hack-skills` remains untouched (Constraint: Source immutability).
+  - This decision applies to ALL future plugin entries in this marketplace (Phase 3 BUILD-03 success criterion needs to reflect this).
 
 ### Install Source
 - **D-04:** Local-path install only for Phase 1: `/plugin marketplace add ./hack-skills-marketplace` (or absolute path to this repo). No git push, no GitHub install during verification.

@@ -2,7 +2,7 @@
 
 ## What This Is
 
-A personal Claude Code marketplace that curates `yaklang/hack-skills` (102 skills) into topically-grouped, individually-enableable plugins. Each group exposes a curated subset via `strict: false` + a `skills` array, so users (primarily Spencer, working on the `purplehaze` security product) can toggle on only the categories relevant to current feature work — keeping context windows lean while leaving the upstream repo untouched.
+A personal Claude Code marketplace that curates `yaklang/hack-skills` (102 skills) into topically-grouped, individually-enableable plugins. Each group exposes a curated subset via `strict: false` + a `skills` array against a `git-subdir` source descriptor (path: `skills`), so users (primarily Spencer, working on the `purplehaze` security product) can toggle on only the categories relevant to current feature work — keeping context windows lean while leaving the upstream repo untouched.
 
 ## Core Value
 
@@ -12,11 +12,10 @@ Selective topical activation of hacking-skill prompts so a session's context onl
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Schema assumptions verified: individual-skill addressing (VERIFY-01), context isolation (VERIFY-02), and per-plugin cache behavior (VERIFY-03) all confirmed against real Claude Code installs (Phase 1, 2026-05-22). Required correction during verification: `source: { source: "github", repo: ... }` does NOT honor the `skills` array filter — Claude Code 2.1.148 appears to auto-discover `./skills/*/SKILL.md` at source root. `source: { source: "git-subdir", url: "https://github.com/yaklang/hack-skills.git", path: "skills" }` with root-level skill paths (no `./skills/` prefix) is the working mechanism. Token cost validated end-to-end: ~10,503 tok always-on under broken pattern, ~205 tok always-on for the 2-skill auth-bypass curation under fix.
 
 ### Active
 
-- [ ] Schema assumptions verified: individual-skill addressing, context isolation, and per-plugin cache behavior all confirmed against real Claude Code installs
 - [ ] ~8 topical group plugins defined based on `purplehaze`'s feature surface (not yaklang's categorization)
 - [ ] All ~8 groups implemented in `.claude-plugin/marketplace.json` cherry-picking specific skills from `yaklang/hack-skills` via the `skills` array
 - [ ] Each group is independently installable and limits the session to its curated 8–15 skills
@@ -52,12 +51,13 @@ Selective topical activation of hacking-skill prompts so a session's context onl
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Use `strict: false` on every plugin entry | Upstream has no `plugin.json`; `strict: false` makes the marketplace entry the full plugin definition, so we don't need to add one. | — Pending verification |
-| Cherry-pick skills via the `skills` array per plugin entry | Documented as a valid marketplace-entry field. Lets one source repo back N differently-scoped plugins. | — Pending verification (Open Question 1) |
-| Multiple plugin entries share `yaklang/hack-skills` as their `source` | Duplicate-detection is on `name`, not `source`. Per-plugin caching means N entries → N separate clones; storage is small for a text-only repo. | — Pending verification (Open Question 3) |
+| Use `strict: false` on every plugin entry | Upstream has no `plugin.json`; `strict: false` makes the marketplace entry the full plugin definition, so we don't need to add one. | ✓ Validated (Phase 1) |
+| Cherry-pick skills via the `skills` array per plugin entry | Documented as a valid marketplace-entry field. Lets one source repo back N differently-scoped plugins. | ✓ Validated (Phase 1) — works ONLY when paths sit at the root of the cloned source (not nested under `./skills/`). See git-subdir decision below. |
+| **Use `git-subdir` source descriptor with `path: "skills"` (NOT plain `github` source)** | Phase 1 found that `source: { source: "github", repo: "yaklang/hack-skills" }` ignored the `skills` array — `claude plugin details` reported all 102 upstream skills and ~10,503 always-on tokens. Working precedents (wondelai-skills, oracle/netsuite-suitecloud-sdk) all clone content such that skill dirs land at the source root. `git-subdir` with `path: "skills"` sparse-clones only `yaklang/hack-skills`'s `skills/` subdir, making each skill directory addressable as `./<skill-name>` from the source root. | ✓ Validated (Phase 1) — see `.planning/phases/01-schema-verification/01-VERIFICATION.md` |
+| Multiple plugin entries share `yaklang/hack-skills` as their `source` | Duplicate-detection is on `name`, not `source`. Per-plugin caching means N entries → N separate clones; storage is small for a text-only repo. | ✓ Validated (Phase 1) — `~/.claude/plugins/cache/hack-skills-marketplace/` contains a parallel `<plugin-name>/<sha>-<path-hash>/` subdir per installed plugin; cache slot tokens include the path-hash suffix unique to `git-subdir` clones, but no collision across plugins sharing the same source SHA. |
 | Group by `purplehaze` feature surface, not yaklang's categorization | We're building this for `purplehaze` work, not as a general-purpose mirror. Yaklang's structure isn't optimized for our usage. | — Pending |
 | Treat upstream PR as a separate effort | The PR is minimal and diplomatic (single-bundled-plugin); the personal marketplace is opinionated and grouped. Conflating them confuses both. | ✓ Good |
-| Verify the 3 open questions before building out all groups | A "no" on Open Question 1 (individual-skill addressing) changes the entire approach. Cheap to verify with a 2-group MVP first. | — Pending |
+| Verify the 3 open questions before building out all groups | A "no" on Open Question 1 (individual-skill addressing) changes the entire approach. Cheap to verify with a 2-group MVP first. | ✓ Done (Phase 1) — required a mid-phase mechanism correction, see git-subdir row above |
 
 ## Evolution
 

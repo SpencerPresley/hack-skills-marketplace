@@ -54,7 +54,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Success Criteria** (what must be TRUE):
   1. `.claude-plugin/marketplace.json` declares one plugin entry per group from the Phase 2 taxonomy (target ~8, final count derived from GROUP outcomes)
   2. Each plugin entry has a `name` matching the pattern `hack-skills-<topic>`, a one-line `description` aligned to the group's scope, and a `skills` array referencing the specific upstream paths assigned to that group in Phase 2
-  3. Every plugin entry uses `strict: false` and has a `source` of `{ "source": "github", "repo": "yaklang/hack-skills" }`
+  3. Every plugin entry uses `strict: false` and has a `source` of `{ "source": "git-subdir", "url": "https://github.com/yaklang/hack-skills.git", "path": "skills" }` (originally specified as `source: github` — corrected during Phase 1 research after that pattern was found not to honor the `skills` array curation; see PROJECT.md Key Decisions)
   4. The marketplace passes a local install smoke test: `/plugin marketplace add ./<repo>` succeeds and every defined group is listed as installable
   5. The skill membership of each built plugin entry exactly matches the assignment captured in the Phase 2 classification artifact (no drift between taxonomy and implementation)
 **Plans**: TBD
