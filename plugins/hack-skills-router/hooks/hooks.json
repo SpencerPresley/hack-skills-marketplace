@@ -15,7 +15,8 @@
     ],
     "UserPromptSubmit": [
       {
-        "matcher": "XSS",
+        "matcher": "(XSS|SQLi|SSRF|XXE|IDOR|BOLA|BFLA|CSRF|CORS|RCE|SSTI|LFI|RFI|JWT|OAuth|SAML|OIDC|NTLM|Kerberos|pentest|bug ?bounty|vulnerab|exploit\\b|payload|attack surface|recon\\b|enumerat|privesc|priv ?esc|reverse shell|lateral movement|burp|nmap|sqlmap|metasploit|gobuster|ffuf|hashcat|mimikatz|bloodhound|CVE-[0-9]{4}-[0-9]+|\\.git/|\\.env\\b|robots\\.txt|/etc/passwd|prototype pollution|deserialization|race condition|web cache|request smuggling|introspection|host header|alg[=:]none|JWKS|parameter pollution|type juggling|NoSQL|\\bWAF\\b)",
+        "comment-on-matcher": "Matcher silently ignored by Claude Code 2.1.x — actual gating happens in nudge.sh via grep -qiE. Kept here for documentation and forward-compat. See .planning/phases/03-hook-scripts-regex/03-CONTEXT.md D-09 + 03-RESEARCH.md §'Drift probe 4b'. After JSON decode, the regex string here is byte-identical to the grep argument in nudge.sh.",
         "hooks": [
           {
             "type": "command",
