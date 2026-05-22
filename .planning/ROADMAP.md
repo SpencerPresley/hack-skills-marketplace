@@ -1,89 +1,114 @@
-# Roadmap: hack-skills-marketplace
+# Roadmap: hack-skills-marketplace (v2.0)
 
 ## Overview
 
-Ship a personal Claude Code marketplace that curates `yaklang/hack-skills` (102 skills) into ~8 topically-grouped, individually-installable plugins. The journey starts with cheap schema verification against a 2-group test marketplace (because a "no" on individual-skill addressing collapses the strategy), proceeds through reading and classifying all 102 upstream skills along skill-content topicality, builds out the full `.claude-plugin/marketplace.json`, and finishes with end-to-end live validation against the published GitHub repo so anyone can run `/plugin marketplace add SpencerPresley/hack-skills-marketplace` and `/plugin install <group>@hack-skills-marketplace` for any defined group.
+Build a sidecar `hack-skills-router` plugin that layers routing intelligence + methodology scaffolding + trust gating on top of v1's 13 topical plugins, without modifying v1. The journey starts with a cheap mechanism spike (verify the sidecar plugin shell loads and stub hooks fire), proceeds through authoring the router skill's terse-frontmatter + body + progressive-disclosure sub-files, then fills in the real SessionStart and UserPromptSubmit hook payloads with the security-context regex, and closes with end-to-end live validation against the published v2 marketplace.
+
+Design source: `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 (shipped) history: `.planning/MILESTONES.md`.
 
 ## Phases
 
-**Phase Numbering:**
-- Integer phases (1, 2, 3): Planned milestone work
-- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
+**Phase Numbering:** Continues from milestone v1.0 (which used 1–4); v2.0 resets to start at Phase 1 since the v1 phase dirs are archived under `.planning/phases-archive-v1.0/`.
 
-Decimal phases appear between their surrounding integers in numeric order.
-
-- [x] **Phase 1: Schema Verification** - Build a minimal 2-group test marketplace and answer the 3 open schema questions (individual-skill addressing, context isolation, per-plugin cache behavior) before committing to the full plan (completed 2026-05-22)
-- [x] **Phase 2: Skill Classification & Taxonomy** - Read all 102 upstream `SKILL.md` files, capture a one-line summary per skill in a classification artifact, and derive the final topical group taxonomy grounded in skill-content topicality (completed 2026-05-22)
-- [x] **Phase 3: Marketplace Build-Out** - Author the full `.claude-plugin/marketplace.json` with all group entries using `strict: false` + curated `skills` arrays cherry-picked from the classification artifact (completed 2026-05-22 — 13 plugins shipped; `hack-skills-routers` intentionally excluded per PROJECT.md grouping axis)
-- [ ] **Phase 4: Publish & Live Validation** - Push the marketplace to GitHub's default branch and verify the install flow works end-to-end for a fresh user against the live published repo
+- [ ] **Phase 1: Plugin Mechanism Spike** — Stand up the sidecar plugin shell (`plugins/hack-skills-router/`), add the marketplace.json entry, declare hook configs with stub scripts, and verify the whole structure installs and fires from the local marketplace.
+- [ ] **Phase 2: Router Skill + Content** — Author the router `SKILL.md` (frontmatter + body), populate `patterns/routing-tables.md` (full v1-plugin coverage), `patterns/expert-intuitions.md` (8 boundary conditions + attribution), and `examples/workflow-walkthroughs.md` (3–4 end-to-end traces).
+- [ ] **Phase 3: Hook Scripts + Regex** — Replace the Phase 1 stub hook scripts with the real SessionStart payload (~250 tok trust + ops + intuitions) and UserPromptSubmit nudge (~75 tok) + the security-context regex matcher.
+- [ ] **Phase 4: Live Validation** — Push v2 marketplace to GitHub, verify a fresh user can install the router from the live published repo and that all hook + routing flows work end-to-end.
 
 ## Phase Details
 
-### Phase 1: Schema Verification
-**Goal**: Prove that `strict: false` + individual-skill paths in the `skills` array actually deliver curated, context-isolated, per-plugin-cached groups — before spending effort on classification and full build-out
-**Depends on**: Nothing (first phase)
-**Requirements**: VERIFY-01, VERIFY-02, VERIFY-03
-**Success Criteria** (what must be TRUE):
-  1. A 2-group test `marketplace.json` exists pointing at `yaklang/hack-skills` with each group's `skills` array listing 2–3 specific individual skill paths (e.g. `./skills/api-recon-and-docs`, not parent directories)
-  2. After installing a test group locally, the session's system reminder lists only the curated skills from that group — no other skills from the upstream repo appear
-  3. With both test groups installed concurrently, `~/.claude/plugins/cache/` contains two separate clean cache entries (one per plugin), and both groups enable without collision
-  4. The 3 open questions from `docs/PLAN.md` are explicitly answered (yes/no with evidence) in a verification artifact captured in the repo
-  5. If any answer is "no", a documented pivot decision exists before Phase 2 begins (e.g. switch to parent-directory grouping, abandon the approach, etc.)
-**Plans**: 4 plans
-  - [x] 01-01-PLAN.md — Author test `.claude-plugin/marketplace.json` (D-01 2-group composition) and validate it via `claude plugin validate`
-  - [x] 01-02-PLAN.md — Install hack-skills-auth-bypass via local path, capture VERIFY-01 (`claude plugin details` Skills line) and VERIFY-02 (system-reminder excerpt + sanity check) evidence, write the first two VERIFY sections of 01-VERIFICATION.md, tear down install state
-  - [x] 01-03-PLAN.md — Install both plugins concurrently (D-10 exception), capture VERIFY-03 cache-tree evidence via `find -mindepth 2 -maxdepth 2 -type d | wc -l`, append the VERIFY-03 section to 01-VERIFICATION.md, final teardown
-  - [x] 01-04-PLAN.md — Append the Pivot Policy section per D-08/D-09 (one entry per VERIFY question), set frontmatter terminal status, validate all 5 Roadmap Phase 1 Success Criteria, update STATE.md
+### Phase 1: Plugin Mechanism Spike
 
-### Phase 2: Skill Classification & Taxonomy
-**Goal**: Produce the data foundation that drives the marketplace — a per-skill classification of all 102 upstream skills plus a final topical group taxonomy grounded in skill-content topicality
+**Goal**: De-risk the entire v2 architecture cheaply by verifying that an in-repo authored plugin (referenced via relative-path `source`) with hook configs actually loads and fires from the marketplace — before investing in real content.
+
+**Depends on**: Nothing (first v2.0 phase)
+**Requirements**: PLUGIN-01, PLUGIN-02
+
+**Success Criteria** (what must be TRUE):
+1. `.claude-plugin/marketplace.json` contains a new entry for `hack-skills-router` with `source: "./plugins/hack-skills-router"` (the relative-path form, NOT git-subdir), alongside the existing 13 v1 topical plugin entries — no v1 entries removed or altered.
+2. `plugins/hack-skills-router/.claude-plugin/plugin.json` exists declaring valid `name`, `description`, `version` (`0.1.0`), and `author`.
+3. `plugins/hack-skills-router/skills/hack-skills-router/SKILL.md` exists as a STUB (frontmatter description + ≤30 lines of body — final body lands in Phase 2). `plugins/hack-skills-router/hooks/hooks.json` declares both SessionStart and UserPromptSubmit hooks with STUB shell scripts (e.g., `echo "[stub] SessionStart fired"` and `echo "[stub] UserPromptSubmit fired"`). The UserPromptSubmit `matcher` can be a placeholder (a single keyword like `XSS` is fine — full regex lands in Phase 3).
+4. From the local marketplace: `/plugin install hack-skills-router@hack-skills-marketplace` succeeds and `claude plugin details hack-skills-router` lists the skill + both hook declarations.
+5. With `hack-skills-router` AND a v1 topical plugin (e.g., `hack-skills-auth-bypass`) BOTH installed in the same session: stub SessionStart inject is observable in Claude's session context (via Claude's behavior or a visible system-reminder excerpt), and both plugins coexist in `claude plugin marketplace list` without conflict.
+
+**Plans**: TBD (will be created via `/gsd:plan-phase 1`)
+
+---
+
+### Phase 2: Router Skill + Content
+
+**Goal**: Make the router skill the intelligence layer. Body of router `SKILL.md` carries the hybrid routing strategy + dual-load + availability handling; progressive-disclosure sub-files carry the full routing tables, intuitions, and walkthroughs that the router cites by name.
+
 **Depends on**: Phase 1
-**Requirements**: GROUP-01, GROUP-02, GROUP-03, GROUP-04
-**Success Criteria** (what must be TRUE):
-  1. A classification artifact exists in the repo listing all 102 skills from `yaklang/hack-skills`, each with a one-line summary describing what the skill covers (sourced from its `SKILL.md`)
-  2. A final topical group taxonomy is documented with one entry per proposed group, each entry stating its scope and its rationale for existing as its own group
-  3. Each proposed group's skill membership falls within the 8–15 skills-per-group sizing constraint from PROJECT.md (or is explicitly flagged as catch-all / sized-with-reason per CONTEXT.md)
-  4. Skills that don't map cleanly to any topical bucket are explicitly listed in the classification artifact and tagged in a catch-all bucket (themed or single-misc), with the reason captured
-  5. Every one of the 102 skills appears in the classification artifact exactly once — either assigned to a group or in the excluded list
-**Plans**: 2 plans
-  - [x] 02-01-PLAN.md — Author `02-extract-descriptions.sh`, extract 102 verbatim SKILL.md descriptions, apply D-01 starter scaffold + D-02 resize + D-03 emergent + D-06 catch-all routing to produce first-pass bucket assignment in `.first-pass-classification.md`, surface compact taxonomy summary at the D-16 mid-phase user-review checkpoint, block on user approval (`status: checkpoint_approved`)
-  - [x] 02-02-PLAN.md — After user approval, verify precondition + re-run D-07 invariant, write final `02-CLASSIFICATION.md` per D-12 layout (per-bucket sections + catch-all + master 102-row table + decision log + Roadmap success criteria check) and final `02-CLASSIFICATION.json` per D-13 bucket-keyed shape (drop-in `skills` arrays for Phase 3 using Phase 1 D-03-REVISED root-level paths)
+**Requirements**: ROUTER-01, ROUTER-02, ROUTER-03, ROUTER-04, ROUTER-05
 
-### Phase 3: Marketplace Build-Out
-**Goal**: Translate the verified schema and the finalized taxonomy into a complete `.claude-plugin/marketplace.json` covering all defined groups
-**Depends on**: Phase 2
-**Requirements**: BUILD-01, BUILD-02, BUILD-03
 **Success Criteria** (what must be TRUE):
-  1. `.claude-plugin/marketplace.json` declares one plugin entry per group from the Phase 2 taxonomy (target ~8, final count derived from GROUP outcomes)
-  2. Each plugin entry has a `name` matching the pattern `hack-skills-<topic>`, a one-line `description` aligned to the group's scope, and a `skills` array referencing the specific upstream paths assigned to that group in Phase 2
-  3. Every plugin entry uses `strict: false` and has a `source` of `{ "source": "git-subdir", "url": "https://github.com/yaklang/hack-skills.git", "path": "skills" }` (originally specified as `source: github` — corrected during Phase 1 research after that pattern was found not to honor the `skills` array curation; see PROJECT.md Key Decisions)
-  4. The marketplace passes a local install smoke test: `/plugin marketplace add ./<repo>` succeeds and every defined group is listed as installable
-  5. The skill membership of each built plugin entry exactly matches the assignment captured in the Phase 2 classification artifact (no drift between taxonomy and implementation)
-**Plans**: 1 plan
-  - [x] 03-01-PLAN.md — Generate `.claude-plugin/marketplace.json` from `02-CLASSIFICATION.json` (13 plugins, `hack-skills-routers` excluded per PROJECT.md grouping axis), validate with `claude plugin validate`, run drift check vs Phase 2 classification (zero drift), and prove the install path via `hack-skills-mobile` install→details→uninstall
+1. Router `SKILL.md` body (per spec §5.7) provides: (a) when-to-use bullets, (b) trust model, (c) hybrid routing strategy (static table primary + reasoning fallback), (d) 3-step operating model, (e) plugin-availability handling instructions, (f) boundary-conditions quick reference, (g) workflow examples cross-reference.
+2. `plugins/hack-skills-router/skills/hack-skills-router/patterns/routing-tables.md` provides a signal → topic-skill table with at least one row per v1 topical plugin (13 plugins minimum; ~30 high-signal rows typical), plus a Dual-load Rules section (≥5 rules), plus the plugin-recommendation template per spec §5.8.
+3. `patterns/expert-intuitions.md` documents all 8 upstream `hack` SKILL.md expert intuitions (BOLA semantics, JWT pre-payload checks, race-condition targets, parameter-name attack surface, second-order vulns, reused filter logic, older API versions, business-logic impact) with one-paragraph explanations each and clear attribution to upstream yaklang/hack-skills (MIT-licensed).
+4. `examples/workflow-walkthroughs.md` contains ≥3 end-to-end traces (suggested: admin panel + JWT cookie, GraphQL with introspection, .env in webroot, coupon reuse). Each trace shows: prompt → testing phase identified → signal route → dual-load if any → boundary conditions surfaced → next-test recommendation.
+5. Manual smoke check: against a representative security query (e.g., "test JWT alg=none on this API"), the router is loadable via `Skill(hack-skills-router)` and its body content references both the patterns/ and examples/ sub-files. When the recommended topical plugin is not installed, the router's content guides Claude to output the specific `/plugin install ...` command.
 
-### Phase 4: Publish & Live Validation
-**Goal**: Ship the marketplace to GitHub and prove the public install flow works for a fresh user — closing out v1.0
-**Depends on**: Phase 3
-**Requirements**: PUB-01, PUB-02, PUB-03, PUB-04
-**Success Criteria** (what must be TRUE):
-  1. The completed marketplace is committed and pushed to the default branch of `github.com/SpencerPresley/hack-skills-marketplace` and the repo is publicly visible
-  2. From a fresh state (marketplace not previously added), `/plugin marketplace add SpencerPresley/hack-skills-marketplace` succeeds without requiring an `@branch` suffix
-  3. From that fresh state, `/plugin install <group>@hack-skills-marketplace` succeeds for every group defined in the marketplace
-  4. After installing any group against the live published marketplace, the session's system reminder lists only that group's curated skills — confirming the Phase 1 isolation result still holds end-to-end against the real GitHub install, not just local
-  5. The install commands match the shape promised in PROJECT.md (plain `/plugin install <name>@hack-skills-marketplace`, no `@branch` suffix) with no per-group workarounds
 **Plans**: TBD
+
+---
+
+### Phase 3: Hook Scripts + Regex
+
+**Goal**: Replace Phase 1's stub hooks with the real payloads + the security-context regex matcher, so the hook layer actually does its job (trust gating once per session, light nudge on security-context prompts).
+
+**Depends on**: Phase 2 (so the hook nudges can reference real router content)
+**Requirements**: HOOKS-01, HOOKS-02, HOOKS-03, HOOKS-04
+
+**Success Criteria** (what must be TRUE):
+1. `plugins/hack-skills-router/hooks/scripts/session-start.sh` outputs the full SessionStart payload per spec §5.4 (~250 tok: trust model + 3-step operating model + 8-entry expert-intuitions snapshot). Script is `bash`, uses `${CLAUDE_PLUGIN_ROOT}` if any path is needed, exits 0, completes within the 5s timeout declared in hooks.json.
+2. `plugins/hack-skills-router/hooks/scripts/nudge.sh` outputs the full UserPromptSubmit nudge per spec §5.5 (~75 tok: confirm-scope + load-router + surface-boundary-conditions instructions). Same constraints as above (bash, CLAUDE_PLUGIN_ROOT, exit 0, 3s timeout).
+3. `plugins/hack-skills-router/hooks/hooks.json` UserPromptSubmit `matcher` field contains the security-context regex from spec §5.3 (case-insensitive; vulnerability acronyms, security verb stems, security tool names, CVE pattern, security-recon file artifacts). JSON validates with `jq` and the regex parses without error in Claude Code.
+4. Manual verification with the now-real hooks installed: SessionStart fires once on session start and the trust+ops+intuitions content is visibly present in Claude's context. UserPromptSubmit fires on at least 5 representative security prompts (XSS, SQLi, JWT, CVE-2024-NNNN, ".env exposure") and does NOT fire on 3 representative non-security prompts ("what's the weather", "refactor this helper", "explain Promise.all").
+
+**Plans**: TBD
+
+---
+
+### Phase 4: Live Validation
+
+**Goal**: Prove the v2 architecture works end-to-end against the published marketplace — not just the local clone. Closes v2.0.
+
+**Depends on**: Phase 3
+**Requirements**: VAL-01, VAL-02, VAL-03, VAL-04, VAL-05
+
+**Success Criteria** (what must be TRUE):
+1. v2 marketplace (commits from Phases 1–3) is pushed to default branch `main` of `github.com/SpencerPresley/hack-skills-marketplace` and the new `hack-skills-router` plugin entry is visible in the public marketplace.json on GitHub.
+2. From a fresh `/plugin marketplace add SpencerPresley/hack-skills-marketplace` (or `update` if already added in a prior session), the marketplace picks up the new `hack-skills-router` entry alongside the existing 13. No `@branch` suffix required.
+3. `/plugin install hack-skills-router@hack-skills-marketplace` from the live published marketplace works without errors. `claude plugin details hack-skills-router@hack-skills-marketplace` lists the router skill + both hook declarations + the source = git clone of this repo.
+4. SessionStart hook injection lands in a fresh post-install session — verified by Claude referencing the operating model / expert intuitions when asked a security question, OR via a hook debug trace if Claude Code exposes one.
+5. UserPromptSubmit hook fires on a real security prompt (e.g., "How do I test for JWT alg=none confusion?"), and a cross-topic prompt (e.g., "doing recon on this REST API, want to test JWT auth and look for IDOR") triggers the router's dual-skill loading + multi-plugin install recommendations.
+
+**Plans**: TBD
+
+---
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4
+Phases execute in numeric order: 1 → 2 → 3 → 4.
+
+Phase 3 depends conceptually on Phase 2 (hook nudge text references router content), but the dependency is loose — Phase 3 could start in parallel once Phase 2 outlines the router body.
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Schema Verification | 4/4 | Complete   | 2026-05-22 |
-| 2. Skill Classification & Taxonomy | 2/2 | Complete   | 2026-05-22 |
-| 3. Marketplace Build-Out | 1/1 | Complete   | 2026-05-22 |
-| 4. Publish & Live Validation | 0/TBD | Not started | - |
-</content>
-</invoke>
+| 1. Plugin Mechanism Spike | 0/TBD | Not started | - |
+| 2. Router Skill + Content | 0/TBD | Not started | - |
+| 3. Hook Scripts + Regex | 0/TBD | Not started | - |
+| 4. Live Validation | 0/TBD | Not started | - |
+
+## Coverage check
+
+- v2.0 requirements: 16 total
+- Mapped to phases: 16 (PLUGIN-01..02 → P1; ROUTER-01..05 → P2; HOOKS-01..04 → P3; VAL-01..05 → P4)
+- Unmapped: 0 ✓
+
+---
+
+*Roadmap created: 2026-05-22 at v2.0 milestone open*
+*v1.0 roadmap history: see `.planning/MILESTONES.md` (Phase 1–4 of v1.0 completed; phase artifacts archived to `.planning/phases-archive-v1.0/`)*

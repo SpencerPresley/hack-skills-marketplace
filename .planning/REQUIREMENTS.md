@@ -87,27 +87,27 @@ Phases mapped to requirements. Populated by the roadmapper agent.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PLUGIN-01 | (TBD by roadmapper) | Pending |
-| PLUGIN-02 | (TBD by roadmapper) | Pending |
-| HOOKS-01 | (TBD by roadmapper) | Pending |
-| HOOKS-02 | (TBD by roadmapper) | Pending |
-| HOOKS-03 | (TBD by roadmapper) | Pending |
-| HOOKS-04 | (TBD by roadmapper) | Pending |
-| ROUTER-01 | (TBD by roadmapper) | Pending |
-| ROUTER-02 | (TBD by roadmapper) | Pending |
-| ROUTER-03 | (TBD by roadmapper) | Pending |
-| ROUTER-04 | (TBD by roadmapper) | Pending |
-| ROUTER-05 | (TBD by roadmapper) | Pending |
-| VAL-01 | (TBD by roadmapper) | Pending |
-| VAL-02 | (TBD by roadmapper) | Pending |
-| VAL-03 | (TBD by roadmapper) | Pending |
-| VAL-04 | (TBD by roadmapper) | Pending |
-| VAL-05 | (TBD by roadmapper) | Pending |
+| PLUGIN-01 | Phase 1: Plugin Mechanism Spike | Pending |
+| PLUGIN-02 | Phase 1: Plugin Mechanism Spike | Pending |
+| ROUTER-01 | Phase 2: Router Skill + Content | Pending |
+| ROUTER-02 | Phase 2: Router Skill + Content | Pending |
+| ROUTER-03 | Phase 2: Router Skill + Content | Pending |
+| ROUTER-04 | Phase 2: Router Skill + Content | Pending |
+| ROUTER-05 | Phase 2: Router Skill + Content | Pending |
+| HOOKS-01 | Phase 3: Hook Scripts + Regex | Pending |
+| HOOKS-02 | Phase 3: Hook Scripts + Regex | Pending |
+| HOOKS-03 | Phase 3: Hook Scripts + Regex | Pending |
+| HOOKS-04 | Phase 3: Hook Scripts + Regex | Pending |
+| VAL-01 | Phase 4: Live Validation | Pending |
+| VAL-02 | Phase 4: Live Validation | Pending |
+| VAL-03 | Phase 4: Live Validation | Pending |
+| VAL-04 | Phase 4: Live Validation | Pending |
+| VAL-05 | Phase 4: Live Validation | Pending |
 
-**Coverage (pre-roadmap):**
+**Coverage:**
 - v2.0 requirements: 16 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 16 ⚠ (will resolve at roadmap step)
+- Mapped to phases: 16 ✓
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-22*
