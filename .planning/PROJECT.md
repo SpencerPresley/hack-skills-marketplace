@@ -33,6 +33,7 @@ Selective topical activation of hacking-skill prompts, with optional routing and
 - [x] All 13 topical groups implemented in `.claude-plugin/marketplace.json` cherry-picking specific skills from `yaklang/hack-skills` via the `skills` array (Phase 3, 2026-05-22). `hack-skills-routers` intentionally excluded per the grouping-axis constraint below. 95 skills exposed across 13 plugins.
 - [x] Each topical group is independently installable and limits the session to its curated 8–15 (or sized-with-reason / catch-all) skills (Phase 3, smoke-tested via `hack-skills-mobile` install→details→uninstall; schema-identical for all 13 per drift-check universal-quantifier).
 - [x] Marketplace published and live at `github.com/SpencerPresley/hack-skills-marketplace` (default branch `main`, public visibility; user confirmed live install works 2026-05-22).
+- [x] v2.0 plugin mechanism end-to-end validated: `hack-skills-router` sidecar (in-repo authored, relative-path `source`) installs from the local marketplace, both hooks register (`claude plugin details` reports `Hooks (2)  SessionStart, UserPromptSubmit`), both stub markers (`[Phase 1 stub] SessionStart hook fired.`, `[Phase 1 stub] UserPromptSubmit hook fired.`) are observable in Claude's session context after a session boundary, and the sidecar coexists with a v1 topical plugin (`hack-skills-auth-bypass`) without conflict (Phase 1 spike, 2026-05-22 — see `01-VERIFICATION.md`). Real hook content + router SKILL body land in Phases 2–3.
 
 ### Active
 
@@ -107,4 +108,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-22 at v2.0 milestone open. Previous: 2026-05-22 after Phase 2 completion.*
+*Last updated: 2026-05-22 after v2.0 Phase 1 (plugin-mechanism-spike) completion. Previous: 2026-05-22 at v2.0 milestone open.*
