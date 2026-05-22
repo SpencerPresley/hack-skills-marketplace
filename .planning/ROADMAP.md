@@ -31,7 +31,12 @@ Design source: `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 (shipped) 
 4. From the local marketplace: `/plugin install hack-skills-router@hack-skills-marketplace` succeeds and `claude plugin details hack-skills-router` lists the skill + both hook declarations.
 5. With `hack-skills-router` AND a v1 topical plugin (e.g., `hack-skills-auth-bypass`) BOTH installed in the same session: stub SessionStart inject is observable in Claude's session context (via Claude's behavior or a visible system-reminder excerpt), and both plugins coexist in `claude plugin marketplace list` without conflict.
 
-**Plans**: TBD (will be created via `/gsd:plan-phase 1`)
+**Plans**: 3 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Create the `plugins/hack-skills-router/` plugin tree (plugin.json, SKILL.md stub, hooks.json, both stub `.sh` scripts, chmod +x)
+- [ ] 01-02-PLAN.md — Append the 14th marketplace entry (`hack-skills-router`) to `.claude-plugin/marketplace.json` with relative-path source, leaving the 13 v1 entries untouched
+- [ ] 01-03-PLAN.md — UAT: pre-flight validate artifacts, re-register marketplace as local path, install + coexistence install, observe SessionStart/UserPromptSubmit stub markers after session boundary
 
 ---
 
@@ -97,7 +102,7 @@ Phase 3 depends conceptually on Phase 2 (hook nudge text references router conte
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Plugin Mechanism Spike | 0/TBD | Not started | - |
+| 1. Plugin Mechanism Spike | 0/3 | Not started | - |
 | 2. Router Skill + Content | 0/TBD | Not started | - |
 | 3. Hook Scripts + Regex | 0/TBD | Not started | - |
 | 4. Live Validation | 0/TBD | Not started | - |
