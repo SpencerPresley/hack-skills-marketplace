@@ -255,6 +255,12 @@
         "./web-cache-deception",
         "./websocket-security"
       ]
+    },
+    {
+      "name": "hack-skills-router",
+      "source": "./plugins/hack-skills-router",
+      "description": "Routing + scaffolding for hack-skills topical plugins. Adapted from yaklang/hack-skills upstream router.",
+      "keywords": ["security", "pentest", "router", "hooks", "methodology"]
     }
   ]
 }
