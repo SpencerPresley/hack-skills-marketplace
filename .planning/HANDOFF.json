@@ -1,0 +1,125 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-05-22T19:46:14.782Z",
+  "phase": "03",
+  "phase_name": "hook-scripts-regex",
+  "phase_dir": ".planning/phases/03-hook-scripts-regex",
+  "milestone": "v2.0",
+  "milestone_name": "Router & Hooks (Sidecar)",
+  "wave": 2,
+  "total_waves": 2,
+  "plan": "03-02",
+  "task": 2,
+  "total_tasks": 2,
+  "status": "paused_at_checkpoint",
+  "checkpoint_type": "human-verify",
+  "checkpoint_gate": "blocking",
+  "completed_plans": [
+    {
+      "id": "03-01",
+      "wave": 1,
+      "status": "complete",
+      "summary": ".planning/phases/03-hook-scripts-regex/03-01-SUMMARY.md",
+      "merged_to_main": true,
+      "commits": [
+        {"hash": "eabb7f1", "msg": "feat(03-01): rewrite session-start.sh body — stub to ~250 tok SessionStart payload"},
+        {"hash": "37c0ce4", "msg": "feat(03-01): rewrite nudge.sh body — stub to jq+grep regex filter + ~75 tok nudge"},
+        {"hash": "4f92530", "msg": "feat(03-01): edit hooks.json UserPromptSubmit matcher — placeholder XSS to 522-char regex"},
+        {"hash": "304d5c4", "msg": "test(03-01): run all verification probes — scrub 'Phase 1' from nudge.sh comments"},
+        {"hash": "2f26776", "msg": "docs(03-01): complete hook body rewrite plan summary"},
+        {"hash": "ec1f7a7", "msg": "chore: merge executor worktree (worktree-agent-a5584d833e96b376d)"},
+        {"hash": "1b631f4", "msg": "docs(phase-03): update tracking after wave 1"}
+      ],
+      "probes_passed": [
+        "drift 4a (SKILL.md ↔ session-start.sh byte-identity)",
+        "drift 4b (hooks.json matcher ↔ nudge.sh regex byte-identity)",
+        "drift 4c (no STUB/placeholder/Phase 1 markers in .sh files)",
+        "JSON validity (jq parses hooks.json)",
+        "chmod preservation (both .sh mode 0755)",
+        "functional shell smoke (positive XSS → 473 bytes; negative weather → 0 bytes; SessionStart banner renders)",
+        "token-count session-start.sh = 341 tok (target 150-400)",
+        "token-count nudge.sh = 81 tok (target 50-100)"
+      ]
+    }
+  ],
+  "completed_tasks": [
+    {
+      "plan": "03-02",
+      "id": 1,
+      "name": "Plugin cache refresh + cache-content sanity check",
+      "status": "done",
+      "commit": "35fed21",
+      "location": "worktree-agent-a86bd5ef973089bc1 branch (not yet merged to main)"
+    },
+    {
+      "plan": "03-02",
+      "id": "2a",
+      "name": "Prepare UAT evidence scaffold (sub-step of Task 2 before checkpoint)",
+      "status": "done",
+      "commit": "d7f53b9",
+      "location": "worktree-agent-a86bd5ef973089bc1 branch (not yet merged to main)",
+      "artifact": ".planning/phases/03-hook-scripts-regex/03-UAT-EVIDENCE.md (133 lines, 4491 bytes)"
+    }
+  ],
+  "remaining_tasks": [
+    {
+      "plan": "03-02",
+      "id": 2,
+      "name": "Manual UAT execution — SessionStart Option B + 6 positive + 4 negative prompts",
+      "status": "awaiting_human_action",
+      "driver": "user (separate terminal with fresh claude session)",
+      "evidence_file": ".planning/phases/03-hook-scripts-regex/03-UAT-EVIDENCE.md",
+      "after_uat": "continuation agent fills EVIDENCE.md with user's responses + verdicts, commits, writes 03-02-SUMMARY.md"
+    },
+    {
+      "plan": "phase-level",
+      "id": "post-wave",
+      "name": "Code review (gsd:code-review), regression gate, schema-drift gate, verify_phase_goal (gsd-verifier), aggregate_results, Next Up routing",
+      "status": "not_started",
+      "blocks": "phase completion"
+    }
+  ],
+  "blockers": [
+    {
+      "description": "Manual UAT requires user to drive `claude` invocations in a separate terminal — orchestrator cannot run interactive claude sessions",
+      "type": "human_action",
+      "workaround": "User runs 11 prompts (SessionStart probe + 6 positive + 4 negative) in fresh `claude` session, observes responses, records to 03-UAT-EVIDENCE.md, returns with resume signal"
+    }
+  ],
+  "human_actions_pending": [
+    {
+      "action": "Run UAT in separate terminal: SessionStart Option B (fresh `claude`) + 6 positive prompts (UAT-POS-01..06) + 4 negative prompts (UAT-NEG-01..04)",
+      "context": "Validates HOOKS-01..HOOKS-04 in real claude session — automated probes already confirm correctness; this confirms claude actually fires the hooks and uses the injected context",
+      "blocking": true,
+      "evidence_file": ".planning/phases/03-hook-scripts-regex/03-UAT-EVIDENCE.md",
+      "thresholds": "SessionStart PASS; ≥5/6 positive PASS; ≥3/4 negative PASS; UAT-NEG-04 most important (validates D-02 EXCLUSION of `file upload`)"
+    }
+  ],
+  "decisions": [
+    {"decision": "Use Claude Code's `isolation=worktree` for both waves", "rationale": "project config use_worktrees=true; no submodules; .sh + .json changes are worktree-safe", "phase": "03"},
+    {"decision": "Wave 2 executor pauses at checkpoint and returns structured state; orchestrator surfaces to user", "rationale": "Plan 02 Task 2 is autonomous:false with checkpoint:human-verify gate=blocking — UAT cannot be executed by an agent", "phase": "03"},
+    {"decision": "Empty commit for Plan 02 Task 1 (cache refresh)", "rationale": "Plan declares files_modified=[] for Task 1 (cache lives outside the working tree at ~/.claude/plugins/cache/...) — empty commit documents the 6 sanity-check PASS results so verifier has evidence chain", "phase": "03"},
+    {"decision": "Cache layout discovered as `0.1.0/` versioned subdir (not `<sha>-<hash>/` as plan anticipated)", "rationale": "Current CLI v2.1.148 uses versioned layout; fallback `find` resolved it; functionally identical", "phase": "03"}
+  ],
+  "worktrees": [
+    {
+      "branch": "worktree-agent-a86bd5ef973089bc1",
+      "path": "/Users/spencerpresley/code/hack-skills-wip/hack-skills-marketplace/.claude/worktrees/agent-a86bd5ef973089bc1",
+      "head": "d7f53b9",
+      "base": "1b631f4",
+      "locked": true,
+      "lock_reason": "claude agent agent-a86bd5ef973089bc1 (pid was active at pause)",
+      "contains": "EVIDENCE.md scaffold (133 lines) + commits 35fed21 + d7f53b9 — these must be merged or replayed on resume"
+    }
+  ],
+  "uncommitted_files": [],
+  "untracked_in_main_repo": [
+    ".claude/",
+    ".planning/HANDOFF-v2-router-exploration.md"
+  ],
+  "next_action": "On resume: (1) decide whether the Wave 2 worktree (worktree-agent-a86bd5ef973089bc1, locked) is still revivable via SendMessage — if not, manually merge it to main (commits 35fed21 + d7f53b9) and spawn a fresh continuation agent; (2) wait for user to either paste UAT responses or confirm they've filled the EVIDENCE.md themselves; (3) continuation agent fills EVIDENCE.md, commits, writes 03-02-SUMMARY.md; (4) merge worktree, then run code-review → regression-gate → schema-drift-gate → verify_phase_goal → aggregate_results → Next Up (Phase 4: Live Validation)",
+  "context_notes": "Phase 3 is at the very last gate before phase verification. Plan 01 fully landed on main (Wave 1 merged). Plan 02 Task 1 + scaffold for Task 2 are on the Wave 2 worktree branch but NOT yet on main. The user needs to do hands-on UAT — this is the kind of work that only the human can do (running fresh `claude` sessions and observing Claude's behavior in response to the 11 prompts). The orchestrator already ran all 6 hard automated probes (drift 4a/4b/4c, JSON validity, chmod, functional smoke) — those pass. The remaining gap is purely the live-runtime confirmation that Claude Code's hook channel actually fires and that Claude uses the injected context. Phase 4 (Live Validation) comes after this phase completes.",
+  "active_skill_invocations": [
+    "/gsd:execute-phase 3 (orchestrator; paused at Wave 2 checkpoint)"
+  ]
+}
