@@ -30,7 +30,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. The 3 open questions from `docs/PLAN.md` are explicitly answered (yes/no with evidence) in a verification artifact captured in the repo
   5. If any answer is "no", a documented pivot decision exists before Phase 2 begins (e.g. switch to parent-directory grouping, abandon the approach, etc.)
 **Plans**: 4 plans
-  - [ ] 01-01-PLAN.md — Author test `.claude-plugin/marketplace.json` (D-01 2-group composition) and validate it via `claude plugin validate`
+  - [x] 01-01-PLAN.md — Author test `.claude-plugin/marketplace.json` (D-01 2-group composition) and validate it via `claude plugin validate`
   - [ ] 01-02-PLAN.md — Install hack-skills-auth-bypass via local path, capture VERIFY-01 (`claude plugin details` Skills line) and VERIFY-02 (system-reminder excerpt + sanity check) evidence, write the first two VERIFY sections of 01-VERIFICATION.md, tear down install state
   - [ ] 01-03-PLAN.md — Install both plugins concurrently (D-10 exception), capture VERIFY-03 cache-tree evidence via `find -mindepth 2 -maxdepth 2 -type d | wc -l`, append the VERIFY-03 section to 01-VERIFICATION.md, final teardown
   - [ ] 01-04-PLAN.md — Append the Pivot Policy section per D-08/D-09 (one entry per VERIFY question), set frontmatter terminal status, validate all 5 Roadmap Phase 1 Success Criteria, update STATE.md
@@ -78,7 +78,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Schema Verification | 0/TBD | Not started | - |
+| 1. Schema Verification | 1/4 | In Progress|  |
 | 2. Skill Classification & Taxonomy | 0/TBD | Not started | - |
 | 3. Marketplace Build-Out | 0/TBD | Not started | - |
 | 4. Publish & Live Validation | 0/TBD | Not started | - |
