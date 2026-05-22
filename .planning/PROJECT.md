@@ -13,12 +13,12 @@ Selective topical activation of hacking-skill prompts so a session's context onl
 ### Validated
 
 - [x] Schema assumptions verified: individual-skill addressing (VERIFY-01), context isolation (VERIFY-02), and per-plugin cache behavior (VERIFY-03) all confirmed against real Claude Code installs (Phase 1, 2026-05-22). Required correction during verification: `source: { source: "github", repo: ... }` does NOT honor the `skills` array filter — Claude Code 2.1.148 appears to auto-discover `./skills/*/SKILL.md` at source root. `source: { source: "git-subdir", url: "https://github.com/yaklang/hack-skills.git", path: "skills" }` with root-level skill paths (no `./skills/` prefix) is the working mechanism. Token cost validated end-to-end: ~10,503 tok always-on under broken pattern, ~205 tok always-on for the 2-skill auth-bypass curation under fix.
+- [x] Topical group taxonomy defined (Phase 2, 2026-05-22): 14 buckets — 11 primary topical + 3 themed catch-alls — covering all 102 upstream skills exactly once (D-07 invariant verified). Hybrid derivation (D-01 starter scaffold → D-02 resize → D-06 catch-all routing) settled at: `binary-exploitation` (12), `web-injection` (10), `web-client-attacks` (10), `linux-and-post-exploit` (10), `auth-bypass` (9), `server-side-execution` (8), `web-protocol-attacks` (7), `hack-skills-routers` (7 catch-all), `crypto-attacks` (7), `active-directory-and-windows` (7), `recon` (6), `mobile` (3), `forensics-and-misc-recovery` (3 catch-all), `ai-and-supply-chain` (3 catch-all). Drop-in `02-CLASSIFICATION.json` ready for Phase 3 to lift into marketplace.json plugin `skills` arrays.
 
 ### Active
 
-- [ ] ~8 topical group plugins defined based on skill-content topicality (not yaklang's categorization)
-- [ ] All ~8 groups implemented in `.claude-plugin/marketplace.json` cherry-picking specific skills from `yaklang/hack-skills` via the `skills` array
-- [ ] Each group is independently installable and limits the session to its curated 8–15 skills
+- [ ] All 14 groups implemented in `.claude-plugin/marketplace.json` cherry-picking specific skills from `yaklang/hack-skills` via the `skills` array (final count from Phase 2 taxonomy)
+- [ ] Each group is independently installable and limits the session to its curated 8–15 (or sized-with-reason / catch-all) skills
 - [ ] Marketplace is published and live at `github.com/SpencerPresley/hack-skills-marketplace` such that `/plugin marketplace add SpencerPresley/hack-skills-marketplace` works for anyone
 
 ### Out of Scope
@@ -77,4 +77,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-22 after initialization*
+*Last updated: 2026-05-22 after Phase 2 completion*
