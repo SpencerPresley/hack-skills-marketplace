@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Router & Hooks (Sidecar)
-status: ready_to_plan
-stopped_at: Phase 01 complete (3/3) — ready to discuss Phase 2
-last_updated: 2026-05-22T16:12:56.512Z
-last_activity: 2026-05-22 -- Phase 01 complete (Plan 03 UAT approved)
+status: planning
+stopped_at: Phase 2 context gathered
+last_updated: "2026-05-22T16:25:00.274Z"
+last_activity: 2026-05-22
 progress:
   total_phases: 4
   completed_phases: 1
@@ -86,6 +86,6 @@ None at v2.0 milestone open. The design spec at `.planning/specs/2026-05-22-v2-r
 
 ## Session Continuity
 
-Last session: 2026-05-22T16:00:03Z
-Stopped at: Phase 01 (plugin-mechanism-spike) complete. All 3 plans landed; ROADMAP SC #1–#5 all closed. UAT evidence in `.planning/phases/01-plugin-mechanism-spike/01-03-SUMMARY.md`. Marketplace registered local-path (Phase 4 must switch back to GitHub source). Both UAT plugins remain installed at user scope.
-Resume file: .planning/phases/01-plugin-mechanism-spike/01-03-SUMMARY.md
+Last session: 2026-05-22T16:25:00.265Z
+Stopped at: Phase 2 context gathered
+Resume file: .planning/phases/02-router-skill-content/02-CONTEXT.md
