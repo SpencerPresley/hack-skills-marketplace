@@ -90,7 +90,16 @@ Plans:
 3. `plugins/hack-skills-router/hooks/hooks.json` UserPromptSubmit `matcher` field contains the security-context regex from spec §5.3 (case-insensitive; vulnerability acronyms, security verb stems, security tool names, CVE pattern, security-recon file artifacts). JSON validates with `jq` and the regex parses without error in Claude Code.
 4. Manual verification with the now-real hooks installed: SessionStart fires once on session start and the trust+ops+intuitions content is visibly present in Claude's context. UserPromptSubmit fires on at least 5 representative security prompts (XSS, SQLi, JWT, CVE-2024-NNNN, ".env exposure") and does NOT fire on 3 representative non-security prompts ("what's the weather", "refactor this helper", "explain Promise.all").
 
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+**Wave 1**
+
+- [ ] 03-01-PLAN.md — Rewrite session-start.sh + nudge.sh in place; edit hooks.json UserPromptSubmit matcher to final regex; run automated probes (drift 4a/4b/4c, token-count, JSON validity, chmod, functional shell smoke) → HOOKS-01, HOOKS-02, HOOKS-03, HOOKS-04
+
+**Wave 2** *(blocked on Wave 1 — needs files written before cache refresh + UAT runs)*
+
+- [ ] 03-02-PLAN.md — Plugin cache refresh + manual UAT (SessionStart Option B, 6 positive prompts, 4 negative prompts including D-02 file-upload exclusion check); evidence captured to 03-UAT-EVIDENCE.md → HOOKS-01, HOOKS-02, HOOKS-03, HOOKS-04
 
 ---
 
@@ -109,8 +118,6 @@ Plans:
 4. SessionStart hook injection lands in a fresh post-install session — verified by Claude referencing the operating model / expert intuitions when asked a security question, OR via a hook debug trace if Claude Code exposes one.
 5. UserPromptSubmit hook fires on a real security prompt (e.g., "How do I test for JWT alg=none confusion?"), and a cross-topic prompt (e.g., "doing recon on this REST API, want to test JWT auth and look for IDOR") triggers the router's dual-skill loading + multi-plugin install recommendations.
 
-**Plans**: TBD
-
 ---
 
 ## Progress
@@ -124,7 +131,7 @@ Phase 3 depends conceptually on Phase 2 (hook nudge text references router conte
 |-------|----------------|--------|-----------|
 | 1. Plugin Mechanism Spike | 3/3 | Complete | 2026-05-22 |
 | 2. Router Skill + Content | 4/4 | Complete   | 2026-05-22 |
-| 3. Hook Scripts + Regex | 0/TBD | Not started | - |
+| 3. Hook Scripts + Regex | 0/2 | Planned | - |
 | 4. Live Validation | 0/TBD | Not started | - |
 
 ## Coverage check
