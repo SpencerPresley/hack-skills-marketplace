@@ -1,0 +1,228 @@
+{
+  "_meta": {
+    "phase": "02-skill-classification-taxonomy",
+    "classified": "2026-05-22",
+    "total_skills": 102,
+    "bucket_count": 14,
+    "checkpoint_approval_signal": "approved as-is — 2026-05-22 (see .first-pass-classification.md ## Checkpoint Approval section)"
+  },
+  "active-directory-and-windows": {
+    "description": "Active Directory and Windows endpoint attacks",
+    "skills": [
+      "./active-directory-acl-abuse",
+      "./active-directory-certificate-services",
+      "./active-directory-kerberos-attacks",
+      "./ntlm-relay-coercion",
+      "./windows-av-evasion",
+      "./windows-lateral-movement",
+      "./windows-privilege-escalation"
+    ],
+    "notes": "sized-with-reason per D-02: 7 members (below 8 target); scope-expanded from the `ad` D-01 starter (4 AD-only skills, below <5 merge threshold) to include Windows lateral movement, privilege escalation, and AV evasion; the broader Windows-platform cluster shares the same OS substrate. Further merge into linux-and-post-exploit rejected because mixing Windows and Linux/macOS tooling violates D-04 skill-content topicality."
+  },
+  "auth-bypass": {
+    "description": "Authentication and authorization bypass",
+    "skills": [
+      "./401-403-bypass-techniques",
+      "./api-auth-and-jwt-abuse",
+      "./api-authorization-and-bola",
+      "./authbypass-authentication-flaws",
+      "./idor-broken-object-authorization",
+      "./jwt-oauth-token-attacks",
+      "./oauth-oidc-misconfiguration",
+      "./saml-sso-assertion-attacks",
+      "./type-juggling"
+    ],
+    "notes": ""
+  },
+  "binary-exploitation": {
+    "description": "Binary exploitation and reverse engineering",
+    "skills": [
+      "./anti-debugging-techniques",
+      "./arbitrary-write-to-rce",
+      "./binary-protection-bypass",
+      "./browser-exploitation-v8",
+      "./code-obfuscation-deobfuscation",
+      "./format-string-exploitation",
+      "./heap-exploitation",
+      "./kernel-exploitation",
+      "./sandbox-escape-techniques",
+      "./stack-overflow-and-rop",
+      "./symbolic-execution-tools",
+      "./vm-and-bytecode-reverse"
+    ],
+    "notes": "renamed from the `binary` D-01 starter to make scope explicit; includes both exploitation primitives (heap, ROP, format string) and reverse-engineering/analysis tooling because the two halves share the same skill substrate."
+  },
+  "crypto-attacks": {
+    "description": "Cryptography attacks and blockchain/DeFi exploits",
+    "skills": [
+      "./classical-cipher-analysis",
+      "./defi-attack-patterns",
+      "./hash-attack-techniques",
+      "./lattice-crypto-attacks",
+      "./rsa-attack-techniques",
+      "./smart-contract-vulnerabilities",
+      "./symmetric-cipher-attacks"
+    ],
+    "notes": "sized-with-reason per D-02: 7 members (below 8 target); renamed from the `crypto` D-01 starter and scope-expanded to include blockchain/web3 attacks (smart-contract-vulnerabilities, defi-attack-patterns — 2 skills, below <5 merge threshold). Combined under the shared 'crypto' terminology as the security community uses it; if downstream curation wants a separate blockchain bucket later, the move is trivial."
+  },
+  "linux-and-post-exploit": {
+    "description": "Linux/macOS post-exploitation and network pivoting",
+    "skills": [
+      "./container-escape-techniques",
+      "./kubernetes-pentesting",
+      "./linux-lateral-movement",
+      "./linux-privilege-escalation",
+      "./linux-security-bypass",
+      "./macos-process-injection",
+      "./macos-security-bypass",
+      "./network-protocol-attacks",
+      "./reverse-shell-techniques",
+      "./tunneling-and-pivoting"
+    ],
+    "notes": "absorbs the original `payloads` D-01 starter via D-02 merge (only 2 candidate skills, below <5 merge threshold). reverse-shell-techniques folded here under the post-exploit umbrella; unauthorized-access-common-services folded into recon. No standalone `payloads` bucket survives."
+  },
+  "mobile": {
+    "description": "Mobile platform pentesting",
+    "skills": [
+      "./android-pentesting-tricks",
+      "./ios-pentesting-tricks",
+      "./mobile-ssl-pinning-bypass"
+    ],
+    "notes": "sized-with-reason per D-02: 3 members (below 8 target and below the <5 merge threshold); kept standalone because natural merge candidates (active-directory-and-windows for OS-platform parity, linux-and-post-exploit for post-exploit umbrella) would mix mobile and desktop/server platforms, violating D-04 skill-content topicality."
+  },
+  "recon": {
+    "description": "Reconnaissance and attack-surface enumeration",
+    "skills": [
+      "./api-recon-and-docs",
+      "./graphql-and-hidden-parameters",
+      "./insecure-source-code-management",
+      "./recon-and-methodology",
+      "./subdomain-takeover",
+      "./unauthorized-access-common-services"
+    ],
+    "notes": "sized-with-reason per D-02: 6 members (below 8 target); kept standalone because merging into another bucket would mix recon with attack execution and violate D-04 skill-content topicality."
+  },
+  "server-side-execution": {
+    "description": "Server-side code execution and trust-boundary chains",
+    "skills": [
+      "./cmdi-command-injection",
+      "./deserialization-insecure",
+      "./expression-language-injection",
+      "./jndi-injection",
+      "./path-traversal-lfi",
+      "./ssrf-server-side-request-forgery",
+      "./ssti-server-side-template-injection",
+      "./upload-insecure-files"
+    ],
+    "notes": "split from the `injection` D-01 starter along the server-side-execution subtopic axis per D-02 >15 policy."
+  },
+  "web-client-attacks": {
+    "description": "Client-side and browser-context web vulnerabilities",
+    "skills": [
+      "./business-logic-vulnerabilities",
+      "./clickjacking",
+      "./cors-cross-origin-misconfiguration",
+      "./csp-bypass-advanced",
+      "./csrf-cross-site-request-forgery",
+      "./dns-rebinding-attacks",
+      "./open-redirect",
+      "./prototype-pollution",
+      "./prototype-pollution-advanced",
+      "./race-condition"
+    ],
+    "notes": "split from the `injection` D-01 starter along the client-driven and browser-policy subtopic axis per D-02 >15 policy."
+  },
+  "web-injection": {
+    "description": "Web-layer injection and input-driven attacks",
+    "skills": [
+      "./csv-formula-injection",
+      "./dangling-markup-injection",
+      "./email-header-injection",
+      "./ghost-bits-cast-attack",
+      "./nosql-injection",
+      "./sqli-sql-injection",
+      "./waf-bypass-techniques",
+      "./xslt-injection",
+      "./xss-cross-site-scripting",
+      "./xxe-xml-external-entity"
+    ],
+    "notes": "originally part of the `injection` D-01 starter (~35 skills); split along the natural subtopic axis into web-injection / web-protocol-attacks / web-client-attacks / server-side-execution per D-02 >15 policy."
+  },
+  "web-protocol-attacks": {
+    "description": "HTTP protocol-layer attacks and request flow abuse",
+    "skills": [
+      "./crlf-injection",
+      "./http-host-header-attacks",
+      "./http-parameter-pollution",
+      "./http2-specific-attacks",
+      "./request-smuggling",
+      "./web-cache-deception",
+      "./websocket-security"
+    ],
+    "notes": "sized-with-reason per D-02: 7 members (below 8 target); standalone because merging into web-injection (10) would land at 17 and force another split along the same protocol-vs-payload axis."
+  },
+  "ai-and-supply-chain": {
+    "description": "AI/ML security and software supply chain attacks",
+    "skills": [
+      "./ai-ml-security",
+      "./dependency-confusion",
+      "./llm-prompt-injection"
+    ],
+    "notes": "catch-all per D-06 (themed): 3 members (below 8+ D-03 emergent threshold); coherent thin theme — AI/ML + supply-chain skills share a 'trust boundaries in modern software pipelines' frame. Per-member reason tag per D-05: standalone."
+  },
+  "forensics-and-misc-recovery": {
+    "description": "Forensics, memory analysis, and steganographic recovery",
+    "skills": [
+      "./memory-forensics-volatility",
+      "./steganography-techniques",
+      "./traffic-analysis-pcap"
+    ],
+    "notes": "catch-all per D-06 (themed): 3 members; coherent thin theme — forensics-flavored skills (memory analysis, network forensics, steganographic recovery) share a 'recover hidden state from collected artifacts' frame distinct from the offensive-playbook shape of primary topical buckets. Per-member reason tag per D-05: standalone."
+  },
+  "hack-skills-routers": {
+    "description": "Category routing and skill-selection entry points",
+    "skills": [
+      "./api-sec",
+      "./auth-sec",
+      "./business-logic-vuln",
+      "./file-access-vuln",
+      "./hack",
+      "./injection-checking",
+      "./recon-for-sec"
+    ],
+    "notes": "catch-all per D-06 (themed): 7 members; D-05(b) misfit — these are meta-navigation router skills (the upstream's *-sec / *-vuln / top-level hack router skills), not topical playbooks. Per-member reason tag per D-05: redundant. Phase 3 may revisit whether to expose this bucket as a marketplace plugin or exclude it entirely."
+  },
+  "excluded": [],
+  "skill_metadata": {
+    "business-logic-vulnerabilities": {
+      "also_relevant_to": "auth-bypass"
+    },
+    "csp-bypass-advanced": {
+      "also_relevant_to": "web-injection"
+    },
+    "csv-formula-injection": {
+      "also_relevant_to": "server-side-execution"
+    },
+    "dns-rebinding-attacks": {
+      "also_relevant_to": "server-side-execution"
+    },
+    "ghost-bits-cast-attack": {
+      "also_relevant_to": "server-side-execution"
+    },
+    "prototype-pollution-advanced": {
+      "also_relevant_to": "server-side-execution"
+    },
+    "reverse-shell-techniques": {
+      "also_relevant_to": "active-directory-and-windows"
+    },
+    "subdomain-takeover": {
+      "also_relevant_to": "web-injection"
+    },
+    "type-juggling": {
+      "also_relevant_to": "web-injection"
+    },
+    "unauthorized-access-common-services": {
+      "also_relevant_to": "auth-bypass"
+    }
+  }
+}
