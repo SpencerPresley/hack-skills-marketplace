@@ -66,9 +66,9 @@ Plans:
 Plans:
 **Wave 1** *(parallel — no inter-plan dependencies; all 3 ground out at marketplace.json)*
 
-- [ ] 02-01-PLAN.md — Author `patterns/routing-tables.md` (13 plugin-keyed sections, 35 routing rows, 6 dual-load rules, plugin-recommendation template) → ROUTER-02, ROUTER-05
-- [ ] 02-02-PLAN.md — Author `patterns/expert-intuitions.md` (8 paraphrased intuitions: Lede + Mechanism + Example each, file-level attribution to yaklang/hack-skills MIT) → ROUTER-03
-- [ ] 02-03-PLAN.md — Author `examples/workflow-walkthroughs.md` (4 worked traces: admin/JWT, GraphQL, .env, coupon-reuse) → ROUTER-04, ROUTER-05
+- [x] 02-01-PLAN.md — Author `patterns/routing-tables.md` (13 plugin-keyed sections, 35 routing rows, 6 dual-load rules, plugin-recommendation template) → ROUTER-02, ROUTER-05
+- [x] 02-02-PLAN.md — Author `patterns/expert-intuitions.md` (8 paraphrased intuitions: Lede + Mechanism + Example each, file-level attribution to yaklang/hack-skills MIT) → ROUTER-03
+- [x] 02-03-PLAN.md — Author `examples/workflow-walkthroughs.md` (4 worked traces: admin/JWT, GraphQL, .env, coupon-reuse) → ROUTER-04, ROUTER-05
 
 **Wave 2** *(blocked on Wave 1 — body cross-references all 3 sub-files; cross-file lede consistency check requires expert-intuitions.md present)*
 
@@ -123,7 +123,7 @@ Phase 3 depends conceptually on Phase 2 (hook nudge text references router conte
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Plugin Mechanism Spike | 3/3 | Complete | 2026-05-22 |
-| 2. Router Skill + Content | 0/4 | Planned | - |
+| 2. Router Skill + Content | 3/4 | In Progress|  |
 | 3. Hook Scripts + Regex | 0/TBD | Not started | - |
 | 4. Live Validation | 0/TBD | Not started | - |
 
