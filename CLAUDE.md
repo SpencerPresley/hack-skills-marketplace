@@ -3,9 +3,9 @@
 
 **hack-skills-marketplace**
 
-A personal Claude Code marketplace that curates `yaklang/hack-skills` (102 skills) into topically-grouped, individually-enableable plugins. Each group exposes a curated subset via `strict: false` + a `skills` array, so users (primarily Spencer, working on the `purplehaze` security product) can toggle on only the categories relevant to current feature work — keeping context windows lean while leaving the upstream repo untouched.
+A personal Claude Code marketplace that curates `yaklang/hack-skills` (102 skills) into topically-grouped, individually-enableable plugins. Each group exposes a curated subset via `strict: false` + a `skills` array, so users can toggle on only the categories relevant to current feature work — keeping context windows lean while leaving the upstream repo untouched.
 
-**Core Value:** Selective topical activation of hacking-skill prompts so a session's context only carries skills relevant to whatever `purplehaze` feature is being worked on right now.
+**Core Value:** Selective topical activation of hacking-skill prompts so a session's context only carries skills relevant to whatever topical area is being worked on right now.
 
 ### Constraints
 
@@ -13,7 +13,7 @@ A personal Claude Code marketplace that curates `yaklang/hack-skills` (102 skill
 - **Install command shape**: No `@branch` suffixes — use the default ref. Install commands must be plain `/plugin install <name>@hack-skills-marketplace`.
 - **Sync model**: Snapshot consumption only. No tooling around auto-pulling upstream changes.
 - **Group sizing**: Target 8–15 skills per group. Beyond ~15 the group pollutes context as much as enabling everything; below ~5 the group probably isn't worth being its own entry.
-- **Grouping axis**: Group by what's relevant to `purplehaze`'s feature surface, NOT by yaklang's own categorization. Skills that don't map to any `purplehaze` feature bucket probably shouldn't have a group at all.
+- **Grouping axis**: Group by skill-content topicality, NOT by yaklang's own categorization. Skills that don't map to any topical bucket probably shouldn't have a group at all.
 <!-- GSD:project-end -->
 
 <!-- GSD:stack-start source:STACK.md -->

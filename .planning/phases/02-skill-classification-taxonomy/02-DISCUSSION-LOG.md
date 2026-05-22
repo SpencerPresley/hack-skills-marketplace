@@ -67,12 +67,12 @@
 | Next area | Taxonomy locked. | |
 | More questions | Still gray areas. | |
 
-**User's choice (free-text via Other):** *"you dont need to worry about purplehaze specifically for this, ill do that in normal sessions, this decomposition is to just make that better. If you need to ask more questions then feel free."*
+**User's choice (free-text via Other):** *"product-specific tailoring is not the optimization target; the user handles that in normal sessions. This decomposition is to make that better. Open to more questions if needed."* [paraphrased to drop product names from repo]
 **Notes:** This was a substantive reframe. Surfaced two follow-up questions to firm up the new framing — see Q6 and Q7 below.
 
 ---
 
-### Q6: If 'purplehaze-relevance' isn't the grouping lens, what IS the lens for deciding buckets?
+### Q6: If product-relevance isn't the grouping lens, what IS the lens for deciding buckets?
 
 | Option | Description | Selected |
 |--------|-------------|----------|
@@ -265,6 +265,6 @@ Areas where the user delegated or explicitly said "you decide":
 - **Bucket-name finalization** — emerges from execution; not pre-lockable.
 - **`RELATED ROUTING` neighbor graph extraction** — useful but secondary signal; first pass uses frontmatter only.
 - **Soft assignment / multi-membership** — rejected via D-08; could revisit in future taxonomy refinement.
-- **purplehaze-feature-surface mapping** — explicitly out of scope per D-04 reframe; Spencer handles in normal sessions.
+- **Product-specific or session-specific feature-surface mapping** — explicitly out of scope per D-04 reframe; the user handles that in normal sessions.
 - **Auto-generated README listing each group's skills** — v2 (`DISC-01`).
 - **Sync/refresh process for upstream changes** — v2 (`SYNC-01`, `SYNC-02`).

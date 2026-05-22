@@ -112,7 +112,7 @@ The mid-phase user-review checkpoint surfaced a compact summary message (bucket 
 
 The D-01 starter scaffold (8 buckets: recon, auth-bypass, injection, payloads, mobile, binary, ad, crypto) reshaped substantially under first-pass:
 
-- **`injection` exploded to ~35 skills** if unsplit — every web vuln pulled toward it. Per D-02 `>15 splits along natural subtopic axis`, this is the canonical split case. The four-way split (`web-injection` / `web-protocol-attacks` / `web-client-attacks` / `server-side-execution`) corresponds to four genuinely different threat models for `purplehaze`-style sessions: input-data shape, HTTP message-framing shape, browser/client-policy shape, and server-side execution chain shape. Each lands at 7-10 skills.
+- **`injection` exploded to ~35 skills** if unsplit — every web vuln pulled toward it. Per D-02 `>15 splits along natural subtopic axis`, this is the canonical split case. The four-way split (`web-injection` / `web-protocol-attacks` / `web-client-attacks` / `server-side-execution`) corresponds to four genuinely different threat models for real-world security sessions: input-data shape, HTTP message-framing shape, browser/client-policy shape, and server-side execution chain shape. Each lands at 7-10 skills.
 
 - **`payloads` collapsed to 2 candidate skills** (`reverse-shell-techniques`, `unauthorized-access-common-services`). Below D-02's <5 merge threshold by a wide margin. The two skills had different natural neighbors (post-exploit vs recon), so they split rather than merging into a single new bucket. No standalone `payloads` bucket survives.
 

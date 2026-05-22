@@ -2,7 +2,7 @@
 
 ## Overview
 
-Ship a personal Claude Code marketplace that curates `yaklang/hack-skills` (102 skills) into ~8 topically-grouped, individually-installable plugins. The journey starts with cheap schema verification against a 2-group test marketplace (because a "no" on individual-skill addressing collapses the strategy), proceeds through reading and classifying all 102 upstream skills against `purplehaze`'s feature surface, builds out the full `.claude-plugin/marketplace.json`, and finishes with end-to-end live validation against the published GitHub repo so anyone can run `/plugin marketplace add SpencerPresley/hack-skills-marketplace` and `/plugin install <group>@hack-skills-marketplace` for any defined group.
+Ship a personal Claude Code marketplace that curates `yaklang/hack-skills` (102 skills) into ~8 topically-grouped, individually-installable plugins. The journey starts with cheap schema verification against a 2-group test marketplace (because a "no" on individual-skill addressing collapses the strategy), proceeds through reading and classifying all 102 upstream skills along skill-content topicality, builds out the full `.claude-plugin/marketplace.json`, and finishes with end-to-end live validation against the published GitHub repo so anyone can run `/plugin marketplace add SpencerPresley/hack-skills-marketplace` and `/plugin install <group>@hack-skills-marketplace` for any defined group.
 
 ## Phases
 
@@ -13,7 +13,7 @@ Ship a personal Claude Code marketplace that curates `yaklang/hack-skills` (102 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Schema Verification** - Build a minimal 2-group test marketplace and answer the 3 open schema questions (individual-skill addressing, context isolation, per-plugin cache behavior) before committing to the full plan (completed 2026-05-22)
-- [x] **Phase 2: Skill Classification & Taxonomy** - Read all 102 upstream `SKILL.md` files, capture a one-line summary per skill in a classification artifact, and derive the final topical group taxonomy grounded in `purplehaze`'s feature surface (completed 2026-05-22)
+- [x] **Phase 2: Skill Classification & Taxonomy** - Read all 102 upstream `SKILL.md` files, capture a one-line summary per skill in a classification artifact, and derive the final topical group taxonomy grounded in skill-content topicality (completed 2026-05-22)
 - [ ] **Phase 3: Marketplace Build-Out** - Author the full `.claude-plugin/marketplace.json` with all ~8 group entries using `strict: false` + curated `skills` arrays cherry-picked from the classification artifact
 - [ ] **Phase 4: Publish & Live Validation** - Push the marketplace to GitHub's default branch and verify the install flow works end-to-end for a fresh user against the live published repo
 
@@ -36,14 +36,14 @@ Decimal phases appear between their surrounding integers in numeric order.
   - [x] 01-04-PLAN.md — Append the Pivot Policy section per D-08/D-09 (one entry per VERIFY question), set frontmatter terminal status, validate all 5 Roadmap Phase 1 Success Criteria, update STATE.md
 
 ### Phase 2: Skill Classification & Taxonomy
-**Goal**: Produce the data foundation that drives the marketplace — a per-skill classification of all 102 upstream skills plus a final topical group taxonomy grounded in `purplehaze`'s feature surface
+**Goal**: Produce the data foundation that drives the marketplace — a per-skill classification of all 102 upstream skills plus a final topical group taxonomy grounded in skill-content topicality
 **Depends on**: Phase 1
 **Requirements**: GROUP-01, GROUP-02, GROUP-03, GROUP-04
 **Success Criteria** (what must be TRUE):
   1. A classification artifact exists in the repo listing all 102 skills from `yaklang/hack-skills`, each with a one-line summary describing what the skill covers (sourced from its `SKILL.md`)
-  2. A final topical group taxonomy is documented with one entry per proposed group, each entry stating its scope, its rationale for existing as its own group, and which `purplehaze` feature surface it serves
-  3. Each proposed group's skill membership falls within the 8–15 skills-per-group sizing constraint from PROJECT.md
-  4. Skills that don't map to any `purplehaze`-relevant bucket are explicitly listed in the classification artifact and tagged as intentionally excluded from groups, with the reason captured
+  2. A final topical group taxonomy is documented with one entry per proposed group, each entry stating its scope and its rationale for existing as its own group
+  3. Each proposed group's skill membership falls within the 8–15 skills-per-group sizing constraint from PROJECT.md (or is explicitly flagged as catch-all / sized-with-reason per CONTEXT.md)
+  4. Skills that don't map cleanly to any topical bucket are explicitly listed in the classification artifact and tagged in a catch-all bucket (themed or single-misc), with the reason captured
   5. Every one of the 102 skills appears in the classification artifact exactly once — either assigned to a group or in the excluded list
 **Plans**: 2 plans
   - [x] 02-01-PLAN.md — Author `02-extract-descriptions.sh`, extract 102 verbatim SKILL.md descriptions, apply D-01 starter scaffold + D-02 resize + D-03 emergent + D-06 catch-all routing to produce first-pass bucket assignment in `.first-pass-classification.md`, surface compact taxonomy summary at the D-16 mid-phase user-review checkpoint, block on user approval (`status: checkpoint_approved`)

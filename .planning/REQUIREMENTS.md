@@ -1,7 +1,7 @@
 # Requirements: hack-skills-marketplace
 
 **Defined:** 2026-05-22
-**Core Value:** Selective topical activation of hacking-skill prompts so a session's context only carries skills relevant to whatever `purplehaze` feature is being worked on right now.
+**Core Value:** Selective topical activation of hacking-skill prompts so a session's context only carries skills relevant to whatever topical area is being worked on right now.
 
 ## v1 Requirements
 
@@ -15,12 +15,12 @@ Confirms the marketplace schema actually supports the planned approach. A "no" o
 
 ### Grouping
 
-Ensures the group taxonomy is grounded in actual skill content and `purplehaze` relevance — not arbitrary category names. This is the work that prevents groups from feeling random.
+Ensures the group taxonomy is grounded in actual skill content topicality — not arbitrary category names. This is the work that prevents groups from feeling random.
 
 - [ ] **GROUP-01**: All 102 skills in `yaklang/hack-skills` are individually reviewed, with a one-line summary of what each skill covers captured in a classification artifact
-- [ ] **GROUP-02**: A final topical group taxonomy is derived from `purplehaze`'s feature surface, with documented rationale for each bucket explaining what unifies its skills
-- [ ] **GROUP-03**: Each proposed group contains 8–15 skills — within the sizing constraint from PROJECT.md
-- [ ] **GROUP-04**: Skills that don't map cleanly to any `purplehaze`-relevant bucket are explicitly enumerated in the classification artifact and intentionally excluded from groups (with reasoning)
+- [ ] **GROUP-02**: A final topical group taxonomy is derived from skill-content topicality, with documented rationale for each bucket explaining what unifies its skills
+- [ ] **GROUP-03**: Each proposed group contains 8–15 skills — within the sizing constraint from PROJECT.md (or is explicitly flagged as catch-all / sized-with-reason)
+- [ ] **GROUP-04**: Skills that don't map cleanly to any topical bucket are explicitly enumerated in the classification artifact (in a catch-all bucket) with reasoning
 
 ### Build-Out
 

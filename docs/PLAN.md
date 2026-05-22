@@ -15,10 +15,9 @@ marketplace works regardless of whether the PR is merged.
 
 ## The Idea / Motivation
 
-**Use case.** `yaklang/hack-skills` is idea-fuel for the `purplehaze`
-security product. It's not core tooling — it's a curated library of
-hacking-skill prompts to draw from when planning new features in
-`purplehaze`.
+**Use case.** `yaklang/hack-skills` is idea-fuel for the user's
+security feature work. It's not core tooling — it's a curated library of
+hacking-skill prompts to draw from when planning new features.
 
 **Problem.** Even installed as a single plugin, 102 skills means 102
 skill descriptions in every session's system reminder. Useful for one
@@ -123,9 +122,9 @@ Source paths in `skills` are relative to the plugin's source root
 
 ### Grouping Strategy
 
-Organize by what's relevant to `purplehaze`'s feature surface, NOT by
-yaklang's own categorization. Target **8–15 skills per group** — much
-past that and the group pollutes context as much as "all on."
+Organize by skill-content topicality, NOT by yaklang's own
+categorization. Target **8–15 skills per group** — much past that and
+the group pollutes context as much as "all on."
 
 Suggested starting buckets (refine while reading through the 102 skills):
 
@@ -138,8 +137,8 @@ Suggested starting buckets (refine while reading through the 102 skills):
 - `ad` — Active Directory / Kerberos / ADCS
 - `crypto` — cipher analysis, key abuse
 
-Skills that don't fit any of `purplehaze`'s feature buckets probably
-aren't worth a group at all.
+Skills that don't fit any topical bucket probably aren't worth a group
+at all (or land in a themed catch-all bucket).
 
 ---
 

@@ -10,9 +10,9 @@ Read all 102 upstream `SKILL.md` files in `yaklang/hack-skills/skills/`, capture
 
 **In scope:** reading 102 SKILL.md files, summarizing them verbatim, assigning each to exactly one bucket via the hybrid taxonomy approach, surfacing the proposed taxonomy at a mid-phase checkpoint for user review, finalizing the artifact pair, capturing also-relevant-to metadata for close calls.
 
-**Out of scope:** authoring `.claude-plugin/marketplace.json` (Phase 3 BUILD-01/02/03), GitHub publish/install validation (Phase 4), per-skill content edits (source immutability — `yaklang/hack-skills` stays untouched), purplehaze-specific tailoring (Spencer does that in normal sessions; this phase produces a general-purpose topical decomposition).
+**Out of scope:** authoring `.claude-plugin/marketplace.json` (Phase 3 BUILD-01/02/03), GitHub publish/install validation (Phase 4), per-skill content edits (source immutability — `yaklang/hack-skills` stays untouched), session-specific tailoring (the user does that in normal sessions; this phase produces a general-purpose topical decomposition).
 
-**Reframe from PROJECT.md:** PROJECT.md says "group by purplehaze feature surface." During discussion, the user clarified that purplehaze-specific tailoring is NOT the optimization target — they handle that in normal sessions. **The decomposition's job is clean topical slicing by skill-content topicality so any session can pull in only the relevant slice.** PROJECT.md's framing was directional (size + relevance heuristic), not a precise mapping target. Downstream agents should treat "skill-content topicality" as the operative grouping lens.
+**Reframe from PROJECT.md:** PROJECT.md's original framing leaned on product-specific feature-surface mapping. During discussion, the user clarified that session-specific tailoring is NOT the optimization target — they handle that in normal sessions. **The decomposition's job is clean topical slicing by skill-content topicality so any session can pull in only the relevant slice.** PROJECT.md's framing was directional (size + relevance heuristic), not a precise mapping target. Downstream agents should treat "skill-content topicality" as the operative grouping lens.
 
 </domain>
 
@@ -26,7 +26,7 @@ Read all 102 upstream `SKILL.md` files in `yaklang/hack-skills/skills/`, capture
   - `> 15`: split along the natural subtopic axis (e.g., `injection` → `web-injection` + `protocol-injection`).
   - Bucket names may diverge from PLAN.md's 8 starters as a result. Cleanly-sized buckets matter more than name fidelity to PLAN.md.
 - **D-03:** Allow new buckets that PLAN.md didn't list. **Threshold for spawning a new bucket: 8+ skills clustering around a coherent topic that doesn't fit existing buckets.** Final bucket count is derived, not preordained — could be 8, 9, 10, or more. PLAN.md explicitly says "refine while reading," and this implements that.
-- **D-04:** **Grouping lens = skill-content topicality.** Group by what each skill teaches/covers, not by session-use ('web app pentest') or attack-stage ('kill-chain'). The decomposition's value is "Spencer enables whichever bucket matches the topic of the current session, regardless of which product it's for." This supersedes PROJECT.md's loose "purplehaze feature surface" framing.
+- **D-04:** **Grouping lens = skill-content topicality.** Group by what each skill teaches/covers, not by session-use ('web app pentest') or attack-stage ('kill-chain'). The decomposition's value is "the user enables whichever bucket matches the topic of the current session, regardless of which product it's for." This supersedes PROJECT.md's earlier product-specific feature-surface framing.
 
 ### Catch-all / Excluded Strategy
 - **D-05:** Misfit criteria: a skill is a "misfit" if it is **(a) standalone / no cluster** (too topically isolated to share a bucket without diluting it) OR **(b) too generic / redundant** (overlaps heavily with multiple others, or is a thin wrapper over content already in better-shaped skills).
@@ -78,7 +78,7 @@ Read all 102 upstream `SKILL.md` files in `yaklang/hack-skills/skills/`, capture
 **Downstream agents MUST read these before planning or implementing.**
 
 ### Project context
-- `.planning/PROJECT.md` — Core value, constraints (source immutability, group sizing 8–15, group-by-purplehaze-surface — **note: D-04 above clarifies this as a directional heuristic, NOT a precise mapping target**), key decisions table.
+- `.planning/PROJECT.md` — Core value, constraints (source immutability, group sizing 8–15, group-by-topicality — **note: D-04 above is the operative grouping lens**), key decisions table.
 - `.planning/REQUIREMENTS.md` §Grouping — GROUP-01/02/03/04 exact wording. **Note: GROUP-04 "intentionally excluded from groups" reads under D-06 as "assigned to a catch-all bucket" rather than "absent from marketplace.json" — see Decisions above.**
 - `.planning/ROADMAP.md` §Phase 2 — Goal, dependencies (Phase 1 complete), 5 success criteria. **Success criterion #5 ("every skill appears exactly once") is preserved under D-07.**
 
@@ -142,7 +142,7 @@ Read all 102 upstream `SKILL.md` files in `yaklang/hack-skills/skills/`, capture
 ## Deferred Ideas
 
 - **Bucket-name finalization**: the actual list of final bucket names won't be known until execution. They emerge from D-01 + D-02 + D-03 + the mid-phase checkpoint. Plan should not pre-lock bucket names — the artifact's bucket list is the load-bearing output, not a planning input.
-- **purplehaze-feature-surface mapping** — explicitly out of scope per D-04. Spencer handles purplehaze-specific tailoring in normal sessions. If a future milestone needs that mapping (e.g., "which buckets to default-enable when starting a purplehaze session"), that's its own work — likely v2 if it ever exists.
+- **Session-specific or product-specific feature-surface mapping** — explicitly out of scope per D-04. The user handles session-specific tailoring in normal sessions. If a future milestone needs that mapping (e.g., "which buckets to default-enable when starting a particular session type"), that's its own work — likely v2 if it ever exists.
 - **Soft assignment / multi-membership** — explicitly rejected via D-08. Could be revisited in a future taxonomy refinement if hard-assignment proves limiting in practice.
 - **Bucket descriptions for marketplace.json** — D-13 says the JSON `description` field per bucket is lifted into marketplace.json's plugin `description`. Generating those descriptions is part of Phase 2's output. They should be concise (one line, mirrors the wondelai-skills tone observed in Phase 1 PATTERNS.md) and downstream of the bucket shape, not pre-locked.
 - **Sync/refresh process for upstream changes** — already deferred to v2 (`SYNC-01`, `SYNC-02` in REQUIREMENTS.md). Out of scope for Phase 2.

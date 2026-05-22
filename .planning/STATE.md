@@ -20,7 +20,7 @@ progress:
 
 See: .planning/PROJECT.md (updated 2026-05-22)
 
-**Core value:** Selective topical activation of hacking-skill prompts so a session's context only carries skills relevant to whatever `purplehaze` feature is being worked on right now.
+**Core value:** Selective topical activation of hacking-skill prompts so a session's context only carries skills relevant to whatever topical area is being worked on right now.
 **Current focus:** Phase 02 — skill-classification-taxonomy
 
 ## Current Position
@@ -63,7 +63,7 @@ Recent decisions affecting current work:
 - Project init: Use `strict: false` on every plugin entry (verification pending in Phase 1)
 - Project init: Cherry-pick skills via the `skills` array (verification pending in Phase 1)
 - Project init: Multiple plugin entries share one `source` — verify per-plugin caching in Phase 1
-- Project init: Group by `purplehaze` feature surface, not yaklang's categorization
+- Project init: Group by skill-content topicality, not yaklang's categorization
 - Project init: Verify the 3 open questions with a minimal 2-group test marketplace before building out
 
 ### Pending Todos

@@ -66,7 +66,7 @@ Build a minimal 2-group test `marketplace.json`, install it locally, and answer 
 **Downstream agents MUST read these before planning or implementing.**
 
 ### Project context
-- `.planning/PROJECT.md` — Core value, constraints (`strict: false`, no `@branch`, group sizing 8–15, group-by-purplehaze-surface), key decisions table.
+- `.planning/PROJECT.md` — Core value, constraints (`strict: false`, no `@branch`, group sizing 8–15, group-by-topicality), key decisions table.
 - `.planning/REQUIREMENTS.md` §Schema Validation — VERIFY-01/02/03 exact wording and acceptance.
 - `.planning/ROADMAP.md` §Phase 1 — Goal, dependencies, 5 success criteria (#5 = pivot decision required if any "no").
 
