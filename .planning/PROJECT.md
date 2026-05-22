@@ -34,6 +34,7 @@ Selective topical activation of hacking-skill prompts, with optional routing and
 - [x] Each topical group is independently installable and limits the session to its curated 8–15 (or sized-with-reason / catch-all) skills (Phase 3, smoke-tested via `hack-skills-mobile` install→details→uninstall; schema-identical for all 13 per drift-check universal-quantifier).
 - [x] Marketplace published and live at `github.com/SpencerPresley/hack-skills-marketplace` (default branch `main`, public visibility; user confirmed live install works 2026-05-22).
 - [x] v2.0 plugin mechanism end-to-end validated: `hack-skills-router` sidecar (in-repo authored, relative-path `source`) installs from the local marketplace, both hooks register (`claude plugin details` reports `Hooks (2)  SessionStart, UserPromptSubmit`), both stub markers (`[Phase 1 stub] SessionStart hook fired.`, `[Phase 1 stub] UserPromptSubmit hook fired.`) are observable in Claude's session context after a session boundary, and the sidecar coexists with a v1 topical plugin (`hack-skills-auth-bypass`) without conflict (Phase 1 spike, 2026-05-22 — see `01-VERIFICATION.md`). Real hook content + router SKILL body land in Phases 2–3.
+- [x] Router `SKILL.md` provides hybrid routing (static signal table + model-reasoning fallback) and references `patterns/` + `examples/` sub-files for progressive disclosure (Phase 2, 2026-05-22). SKILL.md body finalized at 89 lines across 7 D-12 sections (when-to-use, trust model, hybrid routing strategy, 3-step operating model, plugin-availability handling, boundary conditions quick reference, workflow examples cross-ref); frontmatter respects dual-cap (224-char first paragraph ≤ 250 cap, 844-char total ≤ 1024 cap); zero STUB markers. Progressive-disclosure sub-files: `patterns/routing-tables.md` (13 plugin-keyed sections, 35 signal→deep-skill rows, 6 dual-load rules, plugin-recommendation template, all names byte-exact vs `marketplace.json`); `patterns/expert-intuitions.md` (8 upstream intuitions w/ Lede + Mechanism + Example, MIT attribution to yaklang/hack-skills); `examples/workflow-walkthroughs.md` (4 worked traces in locked D-01 order). Manual smoke check of runtime auto-invocation persists in `02-HUMAN-UAT.md` until run.
 
 ### Active
 
@@ -42,7 +43,6 @@ v2.0 milestone scope — see `.planning/REQUIREMENTS.md` for the REQ-ID-tagged e
 - [ ] Sidecar `hack-skills-router` plugin authored in repo (`plugins/hack-skills-router/`) with valid `plugin.json`, referenced from `marketplace.json` via relative-path `source`.
 - [ ] `SessionStart` hook fires once per session, injecting trust gate + operating model + expert-intuitions snapshot.
 - [ ] `UserPromptSubmit` hook fires only on prompts matching the security-context regex, injecting the routing nudge.
-- [ ] Router `SKILL.md` provides hybrid routing (static signal table + model-reasoning fallback) and references `patterns/` + `examples/` sub-files for progressive disclosure.
 - [ ] Live validation: install `hack-skills-router` against published v2 marketplace, verify hooks fire, verify routing decisions land on existing topical plugins, verify "plugin not installed" recommendation flow.
 
 ### Out of Scope
@@ -108,4 +108,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-22 after v2.0 Phase 1 (plugin-mechanism-spike) completion. Previous: 2026-05-22 at v2.0 milestone open.*
+*Last updated: 2026-05-22 after v2.0 Phase 2 (router-skill-content) completion. Previous: 2026-05-22 after v2.0 Phase 1 (plugin-mechanism-spike) completion.*
