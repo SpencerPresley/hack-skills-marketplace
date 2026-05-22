@@ -37,8 +37,8 @@ Design source: `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 (shipped) 
 Plans:
 **Wave 1**
 
-- [ ] 01-01-PLAN.md — Create the `plugins/hack-skills-router/` plugin tree (plugin.json, SKILL.md stub, hooks.json, both stub `.sh` scripts, chmod +x)
-- [ ] 01-02-PLAN.md — Append the 14th marketplace entry (`hack-skills-router`) to `.claude-plugin/marketplace.json` with relative-path source, leaving the 13 v1 entries untouched
+- [x] 01-01-PLAN.md — Create the `plugins/hack-skills-router/` plugin tree (plugin.json, SKILL.md stub, hooks.json, both stub `.sh` scripts, chmod +x)
+- [x] 01-02-PLAN.md — Append the 14th marketplace entry (`hack-skills-router`) to `.claude-plugin/marketplace.json` with relative-path source, leaving the 13 v1 entries untouched
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
@@ -111,7 +111,7 @@ Phase 3 depends conceptually on Phase 2 (hook nudge text references router conte
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Plugin Mechanism Spike | 0/3 | Not started | - |
+| 1. Plugin Mechanism Spike | 2/3 | In Progress|  |
 | 2. Router Skill + Content | 0/TBD | Not started | - |
 | 3. Hook Scripts + Regex | 0/TBD | Not started | - |
 | 4. Live Validation | 0/TBD | Not started | - |

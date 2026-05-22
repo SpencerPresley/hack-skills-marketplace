@@ -4,8 +4,8 @@ milestone: v2.0
 milestone_name: Router & Hooks (Sidecar)
 status: executing
 stopped_at: v2.0 milestone opened. Design spec committed at `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 phase artifacts archived to `.planning/phases-archive-v1.0/`. Awaiting REQUIREMENTS.md + ROADMAP.md generation.
-last_updated: "2026-05-22T15:35:13.403Z"
-last_activity: 2026-05-22 -- Phase 1 planning complete
+last_updated: "2026-05-22T15:37:33.350Z"
+last_activity: 2026-05-22 -- Phase 01 execution started
 progress:
   total_phases: 4
   completed_phases: 0
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-22)
 
 **Core value:** Selective topical activation of hacking-skill prompts, with optional routing and methodology scaffolding via the sidecar router plugin.
-**Current focus:** v2.0 — defining requirements for the sidecar router plugin (router skill + hooks).
+**Current focus:** Phase 01 — plugin-mechanism-spike
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Ready to execute
-Last activity: 2026-05-22 -- Phase 1 planning complete
+Phase: 01 (plugin-mechanism-spike) — EXECUTING
+Plan: 1 of 3
+Status: Executing Phase 01
+Last activity: 2026-05-22 -- Phase 01 execution started
 
 ## Performance Metrics
 
