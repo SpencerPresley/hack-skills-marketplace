@@ -45,7 +45,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Each proposed group's skill membership falls within the 8–15 skills-per-group sizing constraint from PROJECT.md
   4. Skills that don't map to any `purplehaze`-relevant bucket are explicitly listed in the classification artifact and tagged as intentionally excluded from groups, with the reason captured
   5. Every one of the 102 skills appears in the classification artifact exactly once — either assigned to a group or in the excluded list
-**Plans**: TBD
+**Plans**: 2 plans
+  - [ ] 02-01-PLAN.md — Author `02-extract-descriptions.sh`, extract 102 verbatim SKILL.md descriptions, apply D-01 starter scaffold + D-02 resize + D-03 emergent + D-06 catch-all routing to produce first-pass bucket assignment in `.first-pass-classification.md`, surface compact taxonomy summary at the D-16 mid-phase user-review checkpoint, block on user approval (`status: checkpoint_approved`)
+  - [ ] 02-02-PLAN.md — After user approval, verify precondition + re-run D-07 invariant, write final `02-CLASSIFICATION.md` per D-12 layout (per-bucket sections + catch-all + master 102-row table + decision log + Roadmap success criteria check) and final `02-CLASSIFICATION.json` per D-13 bucket-keyed shape (drop-in `skills` arrays for Phase 3 using Phase 1 D-03-REVISED root-level paths)
 
 ### Phase 3: Marketplace Build-Out
 **Goal**: Translate the verified schema and the finalized taxonomy into a complete `.claude-plugin/marketplace.json` covering all defined groups
@@ -79,6 +81,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Schema Verification | 4/4 | Complete   | 2026-05-22 |
-| 2. Skill Classification & Taxonomy | 0/TBD | Not started | - |
+| 2. Skill Classification & Taxonomy | 0/2 | Not started | - |
 | 3. Marketplace Build-Out | 0/TBD | Not started | - |
 | 4. Publish & Live Validation | 0/TBD | Not started | - |
+</content>
+</invoke>
