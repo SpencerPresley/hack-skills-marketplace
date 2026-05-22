@@ -1,17 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: ready_to_plan
-stopped_at: Phase 03 complete (1/1) — ready to plan Phase 4 (publish & live validation)
-last_updated: 2026-05-22T00:00:00.000Z
-last_activity: 2026-05-22 -- Phase 03 complete; marketplace.json shipped with 13 plugins
+milestone: v2.0
+milestone_name: Router & Hooks (Sidecar)
+status: planning
+last_updated: "2026-05-22T14:46:37.332Z"
+last_activity: 2026-05-22
 progress:
-  total_phases: 4
-  completed_phases: 3
-  total_plans: 7
-  completed_plans: 7
-  percent: 75
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -20,17 +19,15 @@ progress:
 
 See: .planning/PROJECT.md (updated 2026-05-22)
 
-**Core value:** Selective topical activation of hacking-skill prompts so a session's context only carries skills relevant to whatever topical area is being worked on right now.
-**Current focus:** Phase 4 — publish & live validation
+**Core value:** Selective topical activation of hacking-skill prompts, with optional routing and methodology scaffolding via the sidecar router plugin.
+**Current focus:** v2.0 — defining requirements for the sidecar router plugin (router skill + hooks).
 
 ## Current Position
 
-Phase: 4
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-22
-
-Progress: [███████░░░] 75%
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-05-22 — Milestone v2.0 started
 
 ## Performance Metrics
 
@@ -74,7 +71,7 @@ None yet.
 
 ### Blockers/Concerns
 
-- Phase 1 acts as a gate: a "no" answer to VERIFY-01 (individual-skill addressing) collapses the planned approach and forces a pivot decision before Phase 2 can begin.
+None at v2.0 milestone open. The design spec at `.planning/specs/2026-05-22-v2-router-design.md` identifies 5 implementation questions to verify during v2 Phase 1 (mechanism spike); none are gating risks.
 
 ## Deferred Items
 
@@ -85,6 +82,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-22T00:00:00.000Z
-Stopped at: Phase 3 complete — marketplace.json shipped with 13 plugins; `hack-skills-routers` intentionally excluded per PROJECT.md grouping axis (recorded in 03-01-SUMMARY.md and 03-VERIFICATION.md)
-Resume file: .planning/phases/03-marketplace-build-out/03-VERIFICATION.md
+Last session: 2026-05-22T14:46:00.000Z
+Stopped at: v2.0 milestone opened. Design spec committed at `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 phase artifacts archived to `.planning/phases-archive-v1.0/`. Awaiting REQUIREMENTS.md + ROADMAP.md generation.
+Resume file: .planning/specs/2026-05-22-v2-router-design.md
