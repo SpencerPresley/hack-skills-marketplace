@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Schema Verification** - Build a minimal 2-group test marketplace and answer the 3 open schema questions (individual-skill addressing, context isolation, per-plugin cache behavior) before committing to the full plan (completed 2026-05-22)
 - [x] **Phase 2: Skill Classification & Taxonomy** - Read all 102 upstream `SKILL.md` files, capture a one-line summary per skill in a classification artifact, and derive the final topical group taxonomy grounded in skill-content topicality (completed 2026-05-22)
-- [ ] **Phase 3: Marketplace Build-Out** - Author the full `.claude-plugin/marketplace.json` with all ~8 group entries using `strict: false` + curated `skills` arrays cherry-picked from the classification artifact
+- [x] **Phase 3: Marketplace Build-Out** - Author the full `.claude-plugin/marketplace.json` with all group entries using `strict: false` + curated `skills` arrays cherry-picked from the classification artifact (completed 2026-05-22 — 13 plugins shipped; `hack-skills-routers` intentionally excluded per PROJECT.md grouping axis)
 - [ ] **Phase 4: Publish & Live Validation** - Push the marketplace to GitHub's default branch and verify the install flow works end-to-end for a fresh user against the live published repo
 
 ## Phase Details
@@ -59,7 +59,8 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Every plugin entry uses `strict: false` and has a `source` of `{ "source": "git-subdir", "url": "https://github.com/yaklang/hack-skills.git", "path": "skills" }` (originally specified as `source: github` — corrected during Phase 1 research after that pattern was found not to honor the `skills` array curation; see PROJECT.md Key Decisions)
   4. The marketplace passes a local install smoke test: `/plugin marketplace add ./<repo>` succeeds and every defined group is listed as installable
   5. The skill membership of each built plugin entry exactly matches the assignment captured in the Phase 2 classification artifact (no drift between taxonomy and implementation)
-**Plans**: TBD
+**Plans**: 1 plan
+  - [x] 03-01-PLAN.md — Generate `.claude-plugin/marketplace.json` from `02-CLASSIFICATION.json` (13 plugins, `hack-skills-routers` excluded per PROJECT.md grouping axis), validate with `claude plugin validate`, run drift check vs Phase 2 classification (zero drift), and prove the install path via `hack-skills-mobile` install→details→uninstall
 
 ### Phase 4: Publish & Live Validation
 **Goal**: Ship the marketplace to GitHub and prove the public install flow works for a fresh user — closing out v1.0
@@ -82,7 +83,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Schema Verification | 4/4 | Complete   | 2026-05-22 |
 | 2. Skill Classification & Taxonomy | 2/2 | Complete   | 2026-05-22 |
-| 3. Marketplace Build-Out | 0/TBD | Not started | - |
+| 3. Marketplace Build-Out | 1/1 | Complete   | 2026-05-22 |
 | 4. Publish & Live Validation | 0/TBD | Not started | - |
 </content>
 </invoke>
