@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Router & Hooks (Sidecar)
-status: executing
-stopped_at: Phase 01 (plugin-mechanism-spike) COMPLETE. All 3 plans landed (01-01 plugin tree, 01-02 marketplace entry, 01-03 UAT). ROADMAP SC #1–#5 all closed. Marketplace currently registered local-path; Phase 4 must switch to GitHub source before publish. Both UAT plugins (hack-skills-router, hack-skills-auth-bypass) remain installed at user scope.
-last_updated: "2026-05-22T16:03:15.174Z"
+status: ready_to_plan
+stopped_at: Phase 01 complete (3/3) — ready to discuss Phase 2
+last_updated: 2026-05-22T16:12:56.512Z
 last_activity: 2026-05-22 -- Phase 01 complete (Plan 03 UAT approved)
 progress:
   total_phases: 4
@@ -21,20 +21,20 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-22)
 
 **Core value:** Selective topical activation of hacking-skill prompts, with optional routing and methodology scaffolding via the sidecar router plugin.
-**Current focus:** Phase 02 — Router Skill + Content (ready to start; Phase 01 mechanism spike complete)
+**Current focus:** Phase 2 — router skill + content
 
 ## Current Position
 
-Phase: 01 (plugin-mechanism-spike) — COMPLETE
-Plan: 3 of 3 (complete)
-Status: Phase 01 complete; ready to start Phase 02 (Router Skill + Content)
-Last activity: 2026-05-22 -- Phase 01 complete (Plan 03 UAT approved)
+Phase: 2
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-05-22
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 7
+- Total plans completed: 10
 - Average duration: -
 - Total execution time: 0 hours
 
@@ -42,7 +42,7 @@ Last activity: 2026-05-22 -- Phase 01 complete (Plan 03 UAT approved)
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 4 | - | - |
+| 01 | 3 | - | - |
 | 02 | 2 | - | - |
 | 03 | 1 | - | - |
 
