@@ -11,7 +11,7 @@ Design source: `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 (shipped) 
 **Phase Numbering:** Continues from milestone v1.0 (which used 1–4); v2.0 resets to start at Phase 1 since the v1 phase dirs are archived under `.planning/phases-archive-v1.0/`.
 
 - [x] **Phase 1: Plugin Mechanism Spike** — Stand up the sidecar plugin shell (`plugins/hack-skills-router/`), add the marketplace.json entry, declare hook configs with stub scripts, and verify the whole structure installs and fires from the local marketplace.
-- [ ] **Phase 2: Router Skill + Content** — Author the router `SKILL.md` (frontmatter + body), populate `patterns/routing-tables.md` (full v1-plugin coverage), `patterns/expert-intuitions.md` (8 boundary conditions + attribution), and `examples/workflow-walkthroughs.md` (3–4 end-to-end traces).
+- [x] **Phase 2: Router Skill + Content** — Author the router `SKILL.md` (frontmatter + body), populate `patterns/routing-tables.md` (full v1-plugin coverage), `patterns/expert-intuitions.md` (8 boundary conditions + attribution), and `examples/workflow-walkthroughs.md` (3–4 end-to-end traces). (completed 2026-05-22)
 - [ ] **Phase 3: Hook Scripts + Regex** — Replace the Phase 1 stub hook scripts with the real SessionStart payload (~250 tok trust + ops + intuitions) and UserPromptSubmit nudge (~75 tok) + the security-context regex matcher.
 - [ ] **Phase 4: Live Validation** — Push v2 marketplace to GitHub, verify a fresh user can install the router from the live published repo and that all hook + routing flows work end-to-end.
 
@@ -72,7 +72,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 — body cross-references all 3 sub-files; cross-file lede consistency check requires expert-intuitions.md present)*
 
-- [ ] 02-04-PLAN.md — Rewrite `SKILL.md` in place: production frontmatter (dual-cap respected) + 7-section body (D-12) + cross-refs to all 3 sub-files + inline cross-plugin dual-load example → ROUTER-01, ROUTER-05
+- [x] 02-04-PLAN.md — Rewrite `SKILL.md` in place: production frontmatter (dual-cap respected) + 7-section body (D-12) + cross-refs to all 3 sub-files + inline cross-plugin dual-load example → ROUTER-01, ROUTER-05
 
 ---
 
@@ -123,7 +123,7 @@ Phase 3 depends conceptually on Phase 2 (hook nudge text references router conte
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Plugin Mechanism Spike | 3/3 | Complete | 2026-05-22 |
-| 2. Router Skill + Content | 3/4 | In Progress|  |
+| 2. Router Skill + Content | 4/4 | Complete   | 2026-05-22 |
 | 3. Hook Scripts + Regex | 0/TBD | Not started | - |
 | 4. Live Validation | 0/TBD | Not started | - |
 
