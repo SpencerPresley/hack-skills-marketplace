@@ -12,7 +12,7 @@ Ship a personal Claude Code marketplace that curates `yaklang/hack-skills` (102 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Schema Verification** - Build a minimal 2-group test marketplace and answer the 3 open schema questions (individual-skill addressing, context isolation, per-plugin cache behavior) before committing to the full plan
+- [x] **Phase 1: Schema Verification** - Build a minimal 2-group test marketplace and answer the 3 open schema questions (individual-skill addressing, context isolation, per-plugin cache behavior) before committing to the full plan (completed 2026-05-22)
 - [ ] **Phase 2: Skill Classification & Taxonomy** - Read all 102 upstream `SKILL.md` files, capture a one-line summary per skill in a classification artifact, and derive the final topical group taxonomy grounded in `purplehaze`'s feature surface
 - [ ] **Phase 3: Marketplace Build-Out** - Author the full `.claude-plugin/marketplace.json` with all ~8 group entries using `strict: false` + curated `skills` arrays cherry-picked from the classification artifact
 - [ ] **Phase 4: Publish & Live Validation** - Push the marketplace to GitHub's default branch and verify the install flow works end-to-end for a fresh user against the live published repo
@@ -31,9 +31,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. If any answer is "no", a documented pivot decision exists before Phase 2 begins (e.g. switch to parent-directory grouping, abandon the approach, etc.)
 **Plans**: 4 plans
   - [x] 01-01-PLAN.md — Author test `.claude-plugin/marketplace.json` (D-01 2-group composition) and validate it via `claude plugin validate`
-  - [ ] 01-02-PLAN.md — Install hack-skills-auth-bypass via local path, capture VERIFY-01 (`claude plugin details` Skills line) and VERIFY-02 (system-reminder excerpt + sanity check) evidence, write the first two VERIFY sections of 01-VERIFICATION.md, tear down install state
-  - [ ] 01-03-PLAN.md — Install both plugins concurrently (D-10 exception), capture VERIFY-03 cache-tree evidence via `find -mindepth 2 -maxdepth 2 -type d | wc -l`, append the VERIFY-03 section to 01-VERIFICATION.md, final teardown
-  - [ ] 01-04-PLAN.md — Append the Pivot Policy section per D-08/D-09 (one entry per VERIFY question), set frontmatter terminal status, validate all 5 Roadmap Phase 1 Success Criteria, update STATE.md
+  - [x] 01-02-PLAN.md — Install hack-skills-auth-bypass via local path, capture VERIFY-01 (`claude plugin details` Skills line) and VERIFY-02 (system-reminder excerpt + sanity check) evidence, write the first two VERIFY sections of 01-VERIFICATION.md, tear down install state
+  - [x] 01-03-PLAN.md — Install both plugins concurrently (D-10 exception), capture VERIFY-03 cache-tree evidence via `find -mindepth 2 -maxdepth 2 -type d | wc -l`, append the VERIFY-03 section to 01-VERIFICATION.md, final teardown
+  - [x] 01-04-PLAN.md — Append the Pivot Policy section per D-08/D-09 (one entry per VERIFY question), set frontmatter terminal status, validate all 5 Roadmap Phase 1 Success Criteria, update STATE.md
 
 ### Phase 2: Skill Classification & Taxonomy
 **Goal**: Produce the data foundation that drives the marketplace — a per-skill classification of all 102 upstream skills plus a final topical group taxonomy grounded in `purplehaze`'s feature surface
@@ -78,7 +78,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Schema Verification | 1/4 | In Progress|  |
+| 1. Schema Verification | 4/4 | Complete   | 2026-05-22 |
 | 2. Skill Classification & Taxonomy | 0/TBD | Not started | - |
 | 3. Marketplace Build-Out | 0/TBD | Not started | - |
 | 4. Publish & Live Validation | 0/TBD | Not started | - |
