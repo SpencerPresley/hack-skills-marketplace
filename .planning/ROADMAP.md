@@ -61,7 +61,18 @@ Plans:
 4. `examples/workflow-walkthroughs.md` contains ≥3 end-to-end traces (suggested: admin panel + JWT cookie, GraphQL with introspection, .env in webroot, coupon reuse). Each trace shows: prompt → testing phase identified → signal route → dual-load if any → boundary conditions surfaced → next-test recommendation.
 5. Manual smoke check: against a representative security query (e.g., "test JWT alg=none on this API"), the router is loadable via `Skill(hack-skills-router)` and its body content references both the patterns/ and examples/ sub-files. When the recommended topical plugin is not installed, the router's content guides Claude to output the specific `/plugin install ...` command.
 
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+**Wave 1** *(parallel — no inter-plan dependencies; all 3 ground out at marketplace.json)*
+
+- [ ] 02-01-PLAN.md — Author `patterns/routing-tables.md` (13 plugin-keyed sections, 35 routing rows, 6 dual-load rules, plugin-recommendation template) → ROUTER-02, ROUTER-05
+- [ ] 02-02-PLAN.md — Author `patterns/expert-intuitions.md` (8 paraphrased intuitions: Lede + Mechanism + Example each, file-level attribution to yaklang/hack-skills MIT) → ROUTER-03
+- [ ] 02-03-PLAN.md — Author `examples/workflow-walkthroughs.md` (4 worked traces: admin/JWT, GraphQL, .env, coupon-reuse) → ROUTER-04, ROUTER-05
+
+**Wave 2** *(blocked on Wave 1 — body cross-references all 3 sub-files; cross-file lede consistency check requires expert-intuitions.md present)*
+
+- [ ] 02-04-PLAN.md — Rewrite `SKILL.md` in place: production frontmatter (dual-cap respected) + 7-section body (D-12) + cross-refs to all 3 sub-files + inline cross-plugin dual-load example → ROUTER-01, ROUTER-05
 
 ---
 
@@ -112,7 +123,7 @@ Phase 3 depends conceptually on Phase 2 (hook nudge text references router conte
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Plugin Mechanism Spike | 3/3 | Complete | 2026-05-22 |
-| 2. Router Skill + Content | 0/TBD | Not started | - |
+| 2. Router Skill + Content | 0/4 | Planned | - |
 | 3. Hook Scripts + Regex | 0/TBD | Not started | - |
 | 4. Live Validation | 0/TBD | Not started | - |
 
