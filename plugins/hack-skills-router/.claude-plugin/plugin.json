@@ -1,0 +1,8 @@
+{
+  "name": "hack-skills-router",
+  "description": "Routing + scaffolding for hack-skills topical plugins.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Spencer Presley"
+  }
+}
