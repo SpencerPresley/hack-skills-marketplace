@@ -2,13 +2,14 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Router & Hooks (Sidecar)
-status: planning
-last_updated: "2026-05-22T14:46:37.332Z"
-last_activity: 2026-05-22
+status: executing
+stopped_at: v2.0 milestone opened. Design spec committed at `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 phase artifacts archived to `.planning/phases-archive-v1.0/`. Awaiting REQUIREMENTS.md + ROADMAP.md generation.
+last_updated: "2026-05-22T15:35:13.403Z"
+last_activity: 2026-05-22 -- Phase 1 planning complete
 progress:
   total_phases: 4
   completed_phases: 0
-  total_plans: 0
+  total_plans: 3
   completed_plans: 0
   percent: 0
 ---
@@ -26,8 +27,8 @@ See: .planning/PROJECT.md (updated 2026-05-22)
 
 Phase: Not started (defining requirements)
 Plan: —
-Status: Defining requirements
-Last activity: 2026-05-22 — Milestone v2.0 started
+Status: Ready to execute
+Last activity: 2026-05-22 -- Phase 1 planning complete
 
 ## Performance Metrics
 
