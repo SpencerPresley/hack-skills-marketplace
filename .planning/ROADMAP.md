@@ -99,7 +99,7 @@ Plans:
 
 **Wave 2** *(blocked on Wave 1 — needs files written before cache refresh + UAT runs)*
 
-- [ ] 03-02-PLAN.md — Plugin cache refresh + manual UAT (SessionStart Option B, 6 positive prompts, 4 negative prompts including D-02 file-upload exclusion check); evidence captured to 03-UAT-EVIDENCE.md → HOOKS-01, HOOKS-02, HOOKS-03, HOOKS-04
+- [x] 03-02-PLAN.md — Plugin cache refresh + manual UAT (SessionStart Option B, 6 positive prompts, 4 negative prompts including D-02 file-upload exclusion check); evidence captured to 03-UAT-EVIDENCE.md → HOOKS-01, HOOKS-02, HOOKS-03, HOOKS-04 ✓ All 11 prompts PASS (5/5 SessionStart markers; 6/6 pos; 4/4 neg); D-02 EXCLUSION confirmed. 2026-05-23.
 
 ---
 
