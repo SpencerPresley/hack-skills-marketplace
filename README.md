@@ -1,7 +1,5 @@
 # hack-skills-marketplace
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
 A Claude Code marketplace that curates [`yaklang/hack-skills`](https://github.com/yaklang/hack-skills) (102 security-research skills) into 13 topical plugins, plus an optional `hack-skills-router` sidecar that adds routing and methodology scaffolding through Claude Code hooks. Install only the topical bucket(s) relevant to current work — the session's always-on context stays proportional to what you're actually doing.
 
 ## Install
