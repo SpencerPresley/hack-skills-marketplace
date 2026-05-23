@@ -1,0 +1,5 @@
+# Local GSD tooling and Claude Code state — per-machine, do not commit
+.claude/
+
+# macOS
+.DS_Store
