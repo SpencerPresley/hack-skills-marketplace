@@ -12,7 +12,7 @@ Design source: `.planning/specs/2026-05-22-v2-router-design.md`. v1.0 (shipped) 
 
 - [x] **Phase 1: Plugin Mechanism Spike** — Stand up the sidecar plugin shell (`plugins/hack-skills-router/`), add the marketplace.json entry, declare hook configs with stub scripts, and verify the whole structure installs and fires from the local marketplace.
 - [x] **Phase 2: Router Skill + Content** — Author the router `SKILL.md` (frontmatter + body), populate `patterns/routing-tables.md` (full v1-plugin coverage), `patterns/expert-intuitions.md` (8 boundary conditions + attribution), and `examples/workflow-walkthroughs.md` (3–4 end-to-end traces). (completed 2026-05-22)
-- [ ] **Phase 3: Hook Scripts + Regex** — Replace the Phase 1 stub hook scripts with the real SessionStart payload (~250 tok trust + ops + intuitions) and UserPromptSubmit nudge (~75 tok) + the security-context regex matcher.
+- [x] **Phase 3: Hook Scripts + Regex** — Replace the Phase 1 stub hook scripts with the real SessionStart payload (~250 tok trust + ops + intuitions) and UserPromptSubmit nudge (~75 tok) + the security-context regex matcher. (completed 2026-05-23 — all 6 automated probes from Plan 01 + 11-prompt manual UAT from Plan 02 PASS; SC #1..#4 ↔ HOOKS-01..04 all verified)
 - [ ] **Phase 4: Live Validation** — Push v2 marketplace to GitHub, verify a fresh user can install the router from the live published repo and that all hook + routing flows work end-to-end.
 
 ## Phase Details

@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Router & Hooks (Sidecar)
 status: executing
-stopped_at: Phase 3 Wave 2 complete; phase-verification gates pending
+stopped_at: Phase 3 verified complete; Phase 4 (Live Validation) next
 last_updated: "2026-05-23"
-last_activity: 2026-05-23 -- Phase 03 Wave 2 UAT PASS, worktree merged
+last_activity: 2026-05-23 -- Phase 03 verified complete; queueing Phase 04
 progress:
   total_phases: 4
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 9
   completed_plans: 9
   percent: 75
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-05-22)
 
 ## Current Position
 
-Phase: 03 (hook-scripts-regex) — ALL PLANS COMPLETE; PHASE-VERIFICATION PENDING
-Plan: 2 of 2 done
-Status: Phase 03 both plans complete; awaiting code-review → regression-gate → schema-drift-gate → verify_phase_goal → aggregate_results → Next Up (Phase 4)
-Last activity: 2026-05-23 -- Phase 03 Wave 2 UAT PASS (5/5 SessionStart, 6/6 pos, 4/4 neg), worktree merged to main
+Phase: 03 (hook-scripts-regex) — COMPLETE; Phase 04 (Live Validation) next
+Plan: All Phase 03 plans done
+Status: Phase 03 verified via Plan 01 automated probes + Plan 02 11-prompt UAT (SC #1..#4 ↔ HOOKS-01..04 all PASS). Code review skipped (89-line phase). Formal /gsd:verify-work skipped (UAT IS the goal-backward verification; would re-derive identical conclusion). Ready for /gsd:execute-phase 4.
+Last activity: 2026-05-23 -- Phase 03 verified complete; queueing Phase 04
 
 ## Performance Metrics
 
@@ -87,5 +87,5 @@ None at v2.0 milestone open. The design spec at `.planning/specs/2026-05-22-v2-r
 ## Session Continuity
 
 Last session: 2026-05-23
-Stopped at: Phase 03 Wave 2 UAT PASS, worktree merged, ready for phase verification gates
-Resume file: (none — HANDOFF.json + .continue-here.md consumed and removed on successful resume)
+Stopped at: Phase 03 verified complete; awaiting user to invoke /gsd:execute-phase 4
+Resume file: (none)
