@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-05-22)
 ## Current Position
 
 Phase: 04 (live-validation) — COMPLETE; milestone v2.0 closed
-Plan: Closed inline (no PLAN/SUMMARY); evidence at `.planning/phases/04-live-validation/04-LIVE-VALIDATION.md`
+Plan: Closed inline (no PLAN/SUMMARY); evidence at `.planning/phases-archive-v2.0/04-live-validation/04-LIVE-VALIDATION.md`
 Status: 64 commits pushed to origin/main. Live `marketplace.json` shows 14 plugins. Fresh-session `/plugin install hack-skills-router@hack-skills-marketplace` + `claude plugin details` confirmed. Fresh post-install session surfaces full SessionStart payload (trust + 3-step ops + 8 expert intuitions) verbatim. SC #5 nudge behavior carried from Phase 3 UAT (byte-identical artifacts on remote). Milestone v2.0 ready for archive.
 Last activity: 2026-05-23 -- Phase 04 closed inline (push + live verify); milestone v2.0 complete
 
