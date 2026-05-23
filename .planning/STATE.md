@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Router & Hooks (Sidecar)
-status: executing
-stopped_at: Phase 3 verified complete; Phase 4 (Live Validation) next
+status: milestone-complete
+stopped_at: v2.0 milestone complete — all 4 phases verified; live marketplace published
 last_updated: "2026-05-23"
-last_activity: 2026-05-23 -- Phase 03 verified complete; queueing Phase 04
+last_activity: 2026-05-23 -- Phase 04 closed inline (push + live verify); milestone v2.0 complete
 progress:
   total_phases: 4
-  completed_phases: 3
-  total_plans: 9
-  completed_plans: 9
-  percent: 75
+  completed_phases: 4
+  total_plans: 10
+  completed_plans: 10
+  percent: 100
 ---
 
 # Project State
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-22)
 
 **Core value:** Selective topical activation of hacking-skill prompts, with optional routing and methodology scaffolding via the sidecar router plugin.
-**Current focus:** Phase 03 — hook-scripts-regex
+**Current focus:** v2.0 milestone complete — router + hooks live on published marketplace
 
 ## Current Position
 
-Phase: 03 (hook-scripts-regex) — COMPLETE; Phase 04 (Live Validation) next
-Plan: All Phase 03 plans done
-Status: Phase 03 verified via Plan 01 automated probes + Plan 02 11-prompt UAT (SC #1..#4 ↔ HOOKS-01..04 all PASS). Code review skipped (89-line phase). Formal /gsd:verify-work skipped (UAT IS the goal-backward verification; would re-derive identical conclusion). Ready for /gsd:execute-phase 4.
-Last activity: 2026-05-23 -- Phase 03 verified complete; queueing Phase 04
+Phase: 04 (live-validation) — COMPLETE; milestone v2.0 closed
+Plan: Closed inline (no PLAN/SUMMARY); evidence at `.planning/phases/04-live-validation/04-LIVE-VALIDATION.md`
+Status: 64 commits pushed to origin/main. Live `marketplace.json` shows 14 plugins. Fresh-session `/plugin install hack-skills-router@hack-skills-marketplace` + `claude plugin details` confirmed. Fresh post-install session surfaces full SessionStart payload (trust + 3-step ops + 8 expert intuitions) verbatim. SC #5 nudge behavior carried from Phase 3 UAT (byte-identical artifacts on remote). Milestone v2.0 ready for archive.
+Last activity: 2026-05-23 -- Phase 04 closed inline (push + live verify); milestone v2.0 complete
 
 ## Performance Metrics
 
@@ -87,5 +87,5 @@ None at v2.0 milestone open. The design spec at `.planning/specs/2026-05-22-v2-r
 ## Session Continuity
 
 Last session: 2026-05-23
-Stopped at: Phase 03 verified complete; awaiting user to invoke /gsd:execute-phase 4
+Stopped at: v2.0 milestone complete — all 4 phases verified; live marketplace published; ready for `/gsd:complete-milestone` or next milestone
 Resume file: (none)
